@@ -1,6 +1,27 @@
 Alarm:
     children:
-        - Entry:
+        - Frame:
+            children:
+                - Label:
+                    text: when
+                    pack:
+                        side: left
+                - Entry:
+                    pack:
+                        side: right
+            pack: []
+        - Checkbutton:
+            text: Repeat
+            pack: []
+        - Frame:
+            children:
+                - Label:
+                    text: every
+                    pack:
+                        side: left
+                - Entry:
+                    pack:
+                        side: right
             pack: []
     pack:
         side: left
