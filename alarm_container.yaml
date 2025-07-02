@@ -1,0 +1,39 @@
+AlarmContainer:
+    id: alarm_container
+    children:
+        - Frame:
+            id: alarm_inner_container
+            pack:
+                side: top
+                expand: true
+                fill: both
+        - Frame:
+            bg: grey
+            children:
+                - Frame:
+                    children:
+                        - Button:
+                            text: <-
+                            app_command: on_previous
+                            pack:
+                                side: left
+                        - Label:
+                            text_variable:
+                                name: alarm_count
+                                type: string
+                            text: 0/0
+                            pack:
+                                side: left
+                        - Button:
+                            text: ->
+                            app_command: on_next
+                            pack:
+                                side: right
+                    pack: []
+            pack:
+                side: bottom
+                fill: x
+    pack: 
+        side: top
+        expand: true
+        fill: both

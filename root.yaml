@@ -1,0 +1,37 @@
+Root:
+    geometry: 600x400
+    title: Random Alarms
+    children:
+        - Frame:
+            bg: grey
+            pack: 
+                side: top
+                expand: false
+                fill: x
+            children:
+                - Label:
+                    text: Random Alarms
+                    font: ['', 20, bold]
+                    fg: white
+                    bg: grey
+                    width: 15
+                    anchor: w
+                    justify: left
+                    pack:
+                        side: left
+                - Button:
+                    id: button_add
+                    text: +
+                    font: ['', 16, bold]
+                    pack:
+                        side: left
+                - Label:
+                    font: ['', 16, normal]
+                    fg: white
+                    bg: grey
+                    text_variable: 
+                        name: current_time
+                        type: string
+                    pack:
+                        side: right
+        - AlarmContainer: true

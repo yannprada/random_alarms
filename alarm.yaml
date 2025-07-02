@@ -1,0 +1,6 @@
+Alarm:
+    children:
+        - Entry:
+            pack: []
+    pack:
+        side: left
