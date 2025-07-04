@@ -1,2 +1,4 @@
 TimeEntry:
+    font: ['', 12, bold]
+    width: 8
     pack: right

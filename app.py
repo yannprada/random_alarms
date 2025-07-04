@@ -76,11 +76,9 @@ class TimeEntry(tk.Entry):
         r'^([01]\d|2[0-3]):[0-5]\d:[0-5]\d$',
     ]
     
-    def init(self, var_name):
-        self.var = tk.StringVar()
-        self.var.set('00:00:00')
-        self.configure(textvariable=self.var)
-        
+    def init(self, _name):
+        self._name = _name
+        self.insert(0, '00:00:00')
         self.no_user_input = True
         self.bind('<FocusIn>', self.on_focus_in)
         self.bind('<KeyRelease>', self.on_key_release)
@@ -88,7 +86,7 @@ class TimeEntry(tk.Entry):
     def on_focus_in(self, event):
         if self.no_user_input:
             self.no_user_input = False
-            self.var.set('')
+            self.delete(0, 99)
     
     def on_key_release(self, event):
         if not self.validate(self.get()):
@@ -97,10 +95,12 @@ class TimeEntry(tk.Entry):
     
     def validate(self, time_string):
         l = len(time_string)
-        if l > 8:
-            return False
-        elif l == 0:
+        if l == 0:
             return True
+        elif l == 2 or l == 5:
+            self.insert(l, ':')
+        elif l > 8:
+            return False
         pattern = self.patterns[l-1]
         return re.match(pattern, time_string)
 

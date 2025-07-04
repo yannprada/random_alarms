@@ -4,17 +4,20 @@ Alarm:
         - Frame:
             children:
                 - Label:
-                    text: when
+                    text: 'when: '
+                    font: ['', 12]
                     pack: left
                 - TimeEntry: [when]
             pack: yes
         - Checkbutton:
             text: Repeat
+            font: ['', 12]
             pack: yes
         - Frame:
             children:
                 - Label:
-                    text: every
+                    text: 'every: '
+                    font: ['', 12]
                     pack: left
                 - TimeEntry: [every]
             pack: yes
