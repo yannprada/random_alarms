@@ -6,7 +6,7 @@ Alarm:
                 - Label:
                     text: when
                     pack: left
-                - TimeEntry: yes
+                - TimeEntry: [when]
             pack: yes
         - Checkbutton:
             text: Repeat
@@ -16,6 +16,6 @@ Alarm:
                 - Label:
                     text: every
                     pack: left
-                - TimeEntry: yes
+                - TimeEntry: [every]
             pack: yes
     pack: left
