@@ -26,9 +26,6 @@ class AlarmContainer(tk.Frame):
     def get_widget(self, id):
         return self.builder.tk_widgets[id]
     
-    def get_variable(self, id):
-        return self.builder.tk_variables[id]
-    
     def get_alarms(self):
         return self.get_widget('alarm_inner_container').winfo_children()
     
@@ -53,7 +50,7 @@ class AlarmContainer(tk.Frame):
         
         # update text count
         text = f'{id}/{self.alarm_count}'
-        self.get_variable('alarm_count').set(text)
+        self.tk_variables['alarm_count'].set(text)
         
         if self.alarm_count > 0:
             # hide all alarms
