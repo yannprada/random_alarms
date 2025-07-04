@@ -15,21 +15,18 @@ AlarmContainer:
                         - Button:
                             text: <-
                             app_command: on_previous
-                            pack:
-                                side: left
+                            pack: left
                         - Label:
                             text_variable:
                                 name: alarm_count
                                 type: string
                             text: 0/0
-                            pack:
-                                side: left
+                            pack: left
                         - Button:
                             text: ->
                             app_command: on_next
-                            pack:
-                                side: right
-                    pack: []
+                            pack: right
+                    pack: yes
             pack:
                 side: bottom
                 fill: x

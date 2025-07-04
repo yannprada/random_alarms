@@ -14,10 +14,6 @@ class Root(tk.Tk):
         self.after(100, self._update)
 
 
-class Alarm(tk.Frame):
-    yaml_file = 'alarm.yaml'
-
-
 class AlarmContainer(tk.Frame):
     yaml_file = 'alarm_container.yaml'
     alarm_id = 0
@@ -46,10 +42,10 @@ class AlarmContainer(tk.Frame):
     def update_display(self):
         # make sure id is not out of bounds
         self.alarm_id = wrap_int(self.alarm_id, self.alarm_count - 1)
-        id = 0 if self.alarm_count == 0 else self.alarm_id + 1
+        display_id = 0 if self.alarm_count == 0 else self.alarm_id + 1
         
         # update text count
-        text = f'{id}/{self.alarm_count}'
+        text = f'{display_id}/{self.alarm_count}'
         self.tk_variables['alarm_count'].set(text)
         
         if self.alarm_count > 0:
@@ -60,6 +56,10 @@ class AlarmContainer(tk.Frame):
             
             # show relevant alarm
             alarms[self.alarm_id].pack()
+
+
+class Alarm(tk.Frame):
+    yaml_file = 'alarm.yaml'
 
 
 def wrap_int(x, maxi):

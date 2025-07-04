@@ -4,24 +4,20 @@ Alarm:
             children:
                 - Label:
                     text: when
-                    pack:
-                        side: left
+                    pack: left
                 - Entry:
-                    pack:
-                        side: right
-            pack: []
+                    pack: right
+            pack: yes
         - Checkbutton:
             text: Repeat
-            pack: []
+            pack: yes
         - Frame:
             children:
                 - Label:
                     text: every
-                    pack:
-                        side: left
+                    pack: left
                 - Entry:
-                    pack:
-                        side: right
-            pack: []
+                    pack: right
+            pack: yes
     pack:
         side: left
