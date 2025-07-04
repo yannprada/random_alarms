@@ -19,11 +19,16 @@ Alarm:
                 - Checkbutton:
                     text: Repeat
                     font: ['', 12]
+                    variable:
+                        name: alarm_repeat
+                        type: boolean
+                    app_command: on_repeat_button
                     pack: left
             pack:
                 side: top
                 fill: x
         - Frame:
+            id: alarm_frame_every
             children:
                 - Label:
                     text: 'every: '

@@ -19,6 +19,22 @@ class Root(tk.Tk):
 
 class Alarm(tk.Frame):
     yaml_file = 'alarm.yaml'
+    
+    def init(self):
+        self.hide_frame_every()
+    
+    def on_repeat_button(self):
+        repeat = self.tk_variables['alarm_repeat']
+        if(repeat.get()):
+            self.show_frame_every()
+        else:
+            self.hide_frame_every()
+    
+    def show_frame_every(self):
+        self.builder.tk_widgets['alarm_frame_every'].pack()
+    
+    def hide_frame_every(self):
+        self.builder.tk_widgets['alarm_frame_every'].pack_forget()
 
 
 if __name__ == '__main__':
