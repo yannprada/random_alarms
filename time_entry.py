@@ -15,8 +15,7 @@ class TimeEntry(tk.Entry):
         r'^([01]\d|2[0-3]):[0-5]\d:[0-5]\d$',
     ]
     
-    def init(self, name):
-        self.name = name
+    def init(self):
         self.insert(0, '00:00:00')
         self.no_user_input = True
         self.bind('<FocusIn>', self.on_focus_in)
