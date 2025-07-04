@@ -8,11 +8,18 @@ Alarm:
                     font: ['', 12]
                     pack: left
                 - TimeEntry: [when]
-            pack: yes
-        - Checkbutton:
-            text: Repeat
-            font: ['', 12]
-            pack: yes
+            pack:
+                side: top
+                fill: x
+        - Frame:
+            children:
+                - Checkbutton:
+                    text: Repeat
+                    font: ['', 12]
+                    pack: left
+            pack:
+                side: top
+                fill: x
         - Frame:
             children:
                 - Label:
@@ -20,5 +27,7 @@ Alarm:
                     font: ['', 12]
                     pack: left
                 - TimeEntry: [every]
-            pack: yes
-    pack: left
+            pack:
+                side: top
+                fill: x
+    pack: top
