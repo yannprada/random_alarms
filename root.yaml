@@ -17,14 +17,12 @@ Root:
                     width: 15
                     anchor: w
                     justify: left
-                    pack:
-                        side: left
+                    pack: left
                 - Button:
                     id: button_add
                     text: +
                     font: ['', 16, bold]
-                    pack:
-                        side: left
+                    pack: left
                 - Label:
                     font: ['', 16, normal]
                     fg: white
@@ -32,6 +30,5 @@ Root:
                     text_variable: 
                         name: current_time
                         type: string
-                    pack:
-                        side: right
+                    pack: right
         - AlarmContainer: true

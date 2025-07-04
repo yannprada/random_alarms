@@ -1,12 +1,12 @@
 Alarm:
+    pady: 10
     children:
         - Frame:
             children:
                 - Label:
                     text: when
                     pack: left
-                - Entry:
-                    pack: right
+                - TimeEntry: yes
             pack: yes
         - Checkbutton:
             text: Repeat
@@ -16,8 +16,6 @@ Alarm:
                 - Label:
                     text: every
                     pack: left
-                - Entry:
-                    pack: right
+                - TimeEntry: yes
             pack: yes
-    pack:
-        side: left
+    pack: left

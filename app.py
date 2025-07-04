@@ -62,6 +62,10 @@ class Alarm(tk.Frame):
     yaml_file = 'alarm.yaml'
 
 
+class TimeEntry(tk.Entry):
+    yaml_file = 'time_entry.yaml'
+
+
 def wrap_int(x, maxi):
     if x < 0:
         return maxi
@@ -71,7 +75,8 @@ def wrap_int(x, maxi):
 
 
 if __name__ == '__main__':
-    builder = yamltk.Builder(Root, [Alarm, AlarmContainer])
+    branches = [Alarm, AlarmContainer, TimeEntry]
+    builder = yamltk.Builder(Root, branches)
     
     button = builder.tk_widgets['button_add']
     alarm_container = builder.tk_widgets['alarm_container']
