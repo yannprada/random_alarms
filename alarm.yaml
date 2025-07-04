@@ -1,44 +1,46 @@
 Alarm:
     pady: 10
     children:
-        - Frame:
-            children:
-                - Label:
-                    text: 'when: '
-                    font: ['', 12]
-                    pack: left
-                - TimeEntry:
-                    text_variable:
-                        name: alarm_when
-                        type: string
-            pack:
-                side: top
-                fill: x
-        - Frame:
-            children:
-                - Checkbutton:
-                    text: Repeat
-                    font: ['', 12]
-                    variable:
-                        name: alarm_repeat
-                        type: boolean
-                    app_command: on_repeat_button
-                    pack: left
-            pack:
-                side: top
-                fill: x
-        - Frame:
-            id: alarm_frame_every
-            children:
-                - Label:
-                    text: 'every: '
-                    font: ['', 12]
-                    pack: left
-                - TimeEntry:
-                    text_variable:
-                        name: alarm_every
-                        type: string
-            pack:
-                side: top
-                fill: x
+        - Label:
+            text: 'when:'
+            font: ['', 12]
+            width: 5
+            grid:
+                column: 0
+                row: 0
+        - TimeEntry:
+            text_variable:
+                name: alarm_when
+                type: string
+            grid:
+                column: 1
+                row: 0
+        - Checkbutton:
+            text: Repeat
+            font: ['', 12]
+            variable:
+                name: alarm_repeat
+                type: boolean
+            app_command: on_repeat_button
+            grid:
+                column: 0
+                row: 1
+                columnspan: 2
+                sticky: w
+        - Label:
+            id: alarm_every_label
+            text: 'every:'
+            font: ['', 12]
+            width: 5
+            grid:
+                column: 0
+                row: 2
+        - TimeEntry:
+            id: alarm_every_entry
+            text_variable:
+                name: alarm_every
+                type: string
+            grid:
+                column: 1
+                row: 2
     pack: top

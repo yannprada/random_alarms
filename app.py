@@ -31,10 +31,12 @@ class Alarm(tk.Frame):
             self.hide_frame_every()
     
     def show_frame_every(self):
-        self.builder.tk_widgets['alarm_frame_every'].pack()
+        self.builder.tk_widgets['alarm_every_label'].grid()
+        self.builder.tk_widgets['alarm_every_entry'].grid()
     
     def hide_frame_every(self):
-        self.builder.tk_widgets['alarm_frame_every'].pack_forget()
+        self.builder.tk_widgets['alarm_every_label'].grid_remove()
+        self.builder.tk_widgets['alarm_every_entry'].grid_remove()
 
 
 if __name__ == '__main__':
