@@ -5,16 +5,12 @@ Alarm:
             text: 'when:'
             font: ['', 12]
             width: 5
-            grid:
-                column: 0
-                row: 0
+            grid: [0, 0]
         - TimeEntry:
             text_variable:
                 name: alarm_when
                 type: string
-            grid:
-                column: 1
-                row: 0
+            grid: [0, 1]
         - Checkbutton:
             text: Repeat
             font: ['', 12]
@@ -22,9 +18,8 @@ Alarm:
                 name: alarm_repeat
                 type: boolean
             app_command: on_repeat_button
+            grid: [1, 0]
             grid:
-                column: 0
-                row: 1
                 columnspan: 2
                 sticky: w
         - Label:
@@ -32,15 +27,11 @@ Alarm:
             text: 'every:'
             font: ['', 12]
             width: 5
-            grid:
-                column: 0
-                row: 2
+            grid: [2, 0]
         - TimeEntry:
             id: alarm_every_entry
             text_variable:
                 name: alarm_every
                 type: string
-            grid:
-                column: 1
-                row: 2
+            grid: [2, 1]
     pack: top
