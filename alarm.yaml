@@ -1,4 +1,5 @@
 Alarm:
+    padx: 10
     pady: 10
     children:
         - AlarmAppearance:

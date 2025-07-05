@@ -16,7 +16,6 @@ class Slider(Frame):
     BAR_COLOR_OUTTER = "#c2d6d6"
     BAR_RADIUS = 10
     BAR_RADIUS_INNER = BAR_RADIUS - 5
-    DIGIT_PRECISION = ".1f"  # for showing in the canvas
 
     # relative step size in 0 to 1, set to 0 for no step size restiction
     # may be override by the step_size argument in __init__
@@ -34,6 +33,7 @@ class Slider(Frame):
         show_value = True,
         removable = False,
         addable = False,
+        digit_precision = '.0f'
     ):
         if step_size == None:
             # inherit from class variable
@@ -47,6 +47,7 @@ class Slider(Frame):
         if init_lis == None:
             init_lis = [min_val]
         self.init_lis = init_lis
+        self.digit_precision = digit_precision
         self.max_val = max_val
         self.min_val = min_val
         self.step_size_frac = step_size / float(max_val - min_val)  # step size fraction
@@ -184,7 +185,7 @@ class Slider(Frame):
             y_value = y + Slider.BAR_RADIUS + 8
             value = pos * (self.max_val - self.min_val) + self.min_val
             id_value = self.canv.create_text(
-                x, y_value, text=format(value, Slider.DIGIT_PRECISION)
+                x, y_value, text=format(value, self.digit_precision)
             )
             return [id_outer, id_inner, id_value]
         else:

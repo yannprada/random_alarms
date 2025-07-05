@@ -86,8 +86,19 @@ class AlarmSound(AlarmLabelFrame):
 
 
 class Slider(tkSliderWidget.Slider):
-    def __init__(self, master, kwargs):
-        pass # FIXME
+    def __init__(self, master, **kwargs):
+        kwargs['width'] = 100
+        kwargs['height'] = 40
+        kwargs['min_val'] = 0
+        kwargs['max_val'] = 50
+        kwargs['step_size'] = 1
+        kwargs['init_lis'] = [1, 10]
+        super().__init__(master, **kwargs)
+        self.setValueChangeCallback(print)
+    
+    def getValues(self):
+        values = super().getValues()
+        return list(map(lambda value: int(round(value)), values))
 
 
 class AlarmTime(AlarmLabelFrame):
