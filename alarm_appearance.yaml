@@ -1,10 +1,35 @@
 AlarmAppearance:
     text: Appearance
     children:
-        - Checkbutton:
-            text: random position
+        - Label:
+            text: 'Position:'
             font_size: 12
-            variable: 
-                name: random_position
-                type: boolean
             grid: [0, 0]
+        - Checkbutton:
+            text: random
+            font_size: 12
+            app_command: on_random_button
+            variable:
+                name: is_random
+                type: boolean
+            grid: [0, 1]
+        - Frame:
+            id: alarm_frame_fixed
+            grid:
+                row: 1
+                column: 0
+                columnspan: 2
+        - Label:
+            text: 'Color:'
+            font_size: 12
+            grid: [2, 0]
+        - Button:
+            id: color_button
+            text: pick
+            font_size: 12
+            bd: 0
+            app_command: on_color_button
+            grid:
+                row: 2
+                column: 1
+                sticky: we

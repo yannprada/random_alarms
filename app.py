@@ -1,9 +1,12 @@
 import sys
 sys.path.append('../yaml_tkinter')
 import yamltk
+
+from tkinter import colorchooser
 import tkinter as tk
 import time
-import re
+import colorsys
+
 from time_entry import TimeEntry
 from alarm_container import AlarmContainer
 
@@ -21,34 +24,75 @@ class Alarm(tk.Frame):
     yaml_file = 'alarm.yaml'
 
 
-class AlarmAppearance(tk.LabelFrame):
+class AlarmLabelFrame(tk.LabelFrame):
+    def show_grid(self, ids):
+        self.toggle_grid(ids, True)
+    
+    def hide_grid(self, ids):
+        self.toggle_grid(ids, False)
+    
+    def toggle_grid(self, ids, visible):
+        for id in ids:
+            if visible:
+                self.builder.tk_widgets[id].grid()
+            else:
+                self.builder.tk_widgets[id].grid_remove()
+
+
+class AlarmAppearance(AlarmLabelFrame):
     yaml_file = 'alarm_appearance.yaml'
+    frame_fixed_id = 'alarm_frame_fixed'
+    
+    def init(self):
+        alarm_frame_fixed = self.builder.tk_widgets[self.frame_fixed_id]
+        
+        # generate the options here, because less typing...
+        self.alarm_position = tk.StringVar()
+        
+        for x in range(3):
+            for y in range(3):
+                b = tk.Radiobutton(alarm_frame_fixed, value=f'{x}{y}', 
+                    variable=self.alarm_position)
+                b.grid(row=x, column=y)
+        
+        self.alarm_color = tk.StringVar()
+        self.set_color()
+        
+        self.after(100, lambda: self.alarm_position.set('11'))
+    
+    def on_random_button(self):
+        is_random = self.tk_variables['is_random']
+        self.toggle_grid([self.frame_fixed_id], not is_random.get())
+    
+    def on_color_button(self):
+        color_code = colorchooser.askcolor(title ="Choose color")
+        self.set_color(color_code)
+    
+    def set_color(self, color=((255, 255, 255), 'white')):
+        rgb = color[0]
+        color_name = color[1]
+        
+        h, l, s = colorsys.rgb_to_hls(*rgb)
+        fg = 'black' if l > 125 else 'white'
+        
+        self.alarm_color.set(color_name)
+        self.builder.tk_widgets['color_button'].configure(bg=color_name, fg=fg)
 
 
-class AlarmSound(tk.LabelFrame):
+class AlarmSound(AlarmLabelFrame):
     yaml_file = 'alarm_sound.yaml'
 
 
-class AlarmTime(tk.LabelFrame):
+class AlarmTime(AlarmLabelFrame):
     yaml_file = 'alarm_time.yaml'
+    every_ids = ['alarm_every_label', 'alarm_every_entry']
     
     def init(self):
-        self.hide_frame_every()
+        self.hide_grid(self.every_ids)
     
     def on_repeat_button(self):
         repeat = self.tk_variables['alarm_repeat']
-        if(repeat.get()):
-            self.show_frame_every()
-        else:
-            self.hide_frame_every()
-    
-    def show_frame_every(self):
-        self.builder.tk_widgets['alarm_every_label'].grid()
-        self.builder.tk_widgets['alarm_every_entry'].grid()
-    
-    def hide_frame_every(self):
-        self.builder.tk_widgets['alarm_every_label'].grid_remove()
-        self.builder.tk_widgets['alarm_every_entry'].grid_remove()
+        self.toggle_grid(self.every_ids, repeat.get())
 
 
 if __name__ == '__main__':
