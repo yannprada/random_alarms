@@ -1,7 +1,9 @@
 AlarmSound:
     text: Sound
     children:
-        - Checkbutton:
-            text: repeat
+        - Label:
+            text: 'Number of notes'
             font_size: 12
             grid: [0, 0]
+        - Slider:
+            grid: [1, 0]

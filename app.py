@@ -2,6 +2,7 @@ import sys
 sys.path.append('../yaml_tkinter')
 import yamltk
 
+from tkSliderWidget import tkSliderWidget
 from tkinter import colorchooser
 import tkinter as tk
 import time
@@ -84,6 +85,11 @@ class AlarmSound(AlarmLabelFrame):
     yaml_file = 'alarm_sound.yaml'
 
 
+class Slider(tkSliderWidget.Slider):
+    def __init__(self, master, kwargs):
+        pass # FIXME
+
+
 class AlarmTime(AlarmLabelFrame):
     yaml_file = 'alarm_time.yaml'
     every_ids = ['alarm_every_label', 'alarm_every_entry']
@@ -98,7 +104,7 @@ class AlarmTime(AlarmLabelFrame):
 
 if __name__ == '__main__':
     branches = [Alarm, AlarmContainer, TimeEntry, AlarmSound, AlarmTime, 
-        AlarmAppearance]
+        AlarmAppearance, Slider]
     builder = yamltk.Builder(Root, branches)
     
     button = builder.tk_widgets['button_add']

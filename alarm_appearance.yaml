@@ -5,6 +5,8 @@ AlarmAppearance:
             text: 'Position:'
             font_size: 12
             grid: [0, 0]
+            grid:
+                sticky: w
         - Checkbutton:
             text: random
             font_size: 12
@@ -23,6 +25,8 @@ AlarmAppearance:
             text: 'Color:'
             font_size: 12
             grid: [2, 0]
+            grid:
+                sticky: w
         - Button:
             id: color_button
             text: pick
@@ -42,8 +46,22 @@ AlarmAppearance:
                 sticky: w
         - Entry:
             font_size: 12
+            text_variable:
+                name: message
+                type: string
             grid:
                 row: 4
+                column: 0
+                columnspan: 2
+                sticky: w
+        - Checkbutton:
+            text: Blink with sound
+            font_size: 12
+            variable:
+                name: blinks_with_sound
+                type: boolean
+            grid:
+                row: 5
                 column: 0
                 columnspan: 2
                 sticky: w
