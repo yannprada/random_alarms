@@ -1,0 +1,10 @@
+AlarmAppearance:
+    text: Appearance
+    children:
+        - Checkbutton:
+            text: random position
+            font_size: 12
+            variable: 
+                name: random_position
+                type: boolean
+            grid: [0, 0]

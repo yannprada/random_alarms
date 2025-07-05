@@ -1,0 +1,7 @@
+AlarmSound:
+    text: Sound
+    children:
+        - Checkbutton:
+            text: repeat
+            font_size: 12
+            grid: [0, 0]

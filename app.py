@@ -19,6 +19,18 @@ class Root(tk.Tk):
 
 class Alarm(tk.Frame):
     yaml_file = 'alarm.yaml'
+
+
+class AlarmAppearance(tk.LabelFrame):
+    yaml_file = 'alarm_appearance.yaml'
+
+
+class AlarmSound(tk.LabelFrame):
+    yaml_file = 'alarm_sound.yaml'
+
+
+class AlarmTime(tk.LabelFrame):
+    yaml_file = 'alarm_time.yaml'
     
     def init(self):
         self.hide_frame_every()
@@ -40,7 +52,8 @@ class Alarm(tk.Frame):
 
 
 if __name__ == '__main__':
-    branches = [Alarm, AlarmContainer, TimeEntry]
+    branches = [Alarm, AlarmContainer, TimeEntry, AlarmSound, AlarmTime, 
+        AlarmAppearance]
     builder = yamltk.Builder(Root, branches)
     
     button = builder.tk_widgets['button_add']

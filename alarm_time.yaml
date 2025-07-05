@@ -1,0 +1,36 @@
+AlarmTime:
+    text: Time
+    children:
+        - Label:
+            text: 'when:'
+            font_size: 12
+            width: 5
+            grid: [1, 0]
+        - TimeEntry:
+            text_variable:
+                name: alarm_when
+                type: string
+            grid: [1, 1]
+        - Checkbutton:
+            text: Repeat
+            font_size: 12
+            variable:
+                name: alarm_repeat
+                type: boolean
+            app_command: on_repeat_button
+            grid: [2, 0]
+            grid:
+                columnspan: 2
+                sticky: w
+        - Label:
+            id: alarm_every_label
+            text: 'every:'
+            font_size: 12
+            width: 5
+            grid: [3, 0]
+        - TimeEntry:
+            id: alarm_every_entry
+            text_variable:
+                name: alarm_every
+                type: string
+            grid: [3, 1]

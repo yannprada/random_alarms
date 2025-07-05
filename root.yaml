@@ -1,5 +1,5 @@
 Root:
-    geometry: 500x200
+    minsize: [300, 200]
     title: Random Alarms
     children:
         - Frame:

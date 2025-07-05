@@ -1,50 +1,22 @@
 Alarm:
     pady: 10
     children:
-        - Label:
-            text: Time
-            font_size: 14
-            grid: [0, 0]
-        - Label:
-            text: 'when:'
-            font_size: 12
-            width: 5
-            grid: [1, 0]
-        - TimeEntry:
-            text_variable:
-                name: alarm_when
-                type: string
-            grid: [1, 1]
-        - Checkbutton:
-            text: Repeat
-            font_size: 12
-            variable:
-                name: alarm_repeat
-                type: boolean
-            app_command: on_repeat_button
-            grid: [2, 0]
-            grid:
-                columnspan: 2
-                sticky: w
-        - Label:
-            id: alarm_every_label
-            text: 'every:'
-            font_size: 12
-            width: 5
-            grid: [3, 0]
-        - TimeEntry:
-            id: alarm_every_entry
-            text_variable:
-                name: alarm_every
-                type: string
-            grid: [3, 1]
-        - Label:
-            text: Position
-            font_size: 14
-            grid: [0, 3]
-        - Checkbutton:
-            text: random
-            font_size: 12
-            variable: {name: alarm_position_random, type: boolean}
-            grid: [1, 3]
-    pack: top
+        - AlarmAppearance:
+            pack:
+                side: left
+                expand: true
+                fill: both
+        - AlarmSound:
+            pack:
+                side: left
+                expand: true
+                fill: both
+        - AlarmTime:
+            pack:
+                side: left
+                expand: true
+                fill: both
+    pack:
+        side: top
+        expand: true
+        fill: both
