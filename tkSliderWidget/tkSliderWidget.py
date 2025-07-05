@@ -89,7 +89,7 @@ class Slider(Frame):
             bar["Ids"] = self.__addBar(bar["Pos"])
 
     def getValues(self) -> List[float]:
-        values = [bar["Value"] for bar in self.bars]
+        values = [float(format(bar["Value"], self.digit_precision)) for bar in self.bars]
         return sorted(values)
     
     def setValueChangeCallback(self, callback: Callable[[List[float]], None]):

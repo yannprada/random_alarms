@@ -6,4 +6,13 @@ AlarmSound:
             font_size: 12
             grid: [0, 0]
         - Slider:
+            inner_config:
+                width: 100
+                height: 40
+                min_val: 0
+                max_val: 50
+                step_size: 1
+                init_lis: [1, 10]
             grid: [1, 0]
+            grid:
+                sticky: we
