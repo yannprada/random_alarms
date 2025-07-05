@@ -2,15 +2,19 @@ Alarm:
     pady: 10
     children:
         - Label:
+            text: Time
+            font_size: 14
+            grid: [0, 0]
+        - Label:
             text: 'when:'
             font_size: 12
             width: 5
-            grid: [0, 0]
+            grid: [1, 0]
         - TimeEntry:
             text_variable:
                 name: alarm_when
                 type: string
-            grid: [0, 1]
+            grid: [1, 1]
         - Checkbutton:
             text: Repeat
             font_size: 12
@@ -18,7 +22,7 @@ Alarm:
                 name: alarm_repeat
                 type: boolean
             app_command: on_repeat_button
-            grid: [1, 0]
+            grid: [2, 0]
             grid:
                 columnspan: 2
                 sticky: w
@@ -27,13 +31,13 @@ Alarm:
             text: 'every:'
             font_size: 12
             width: 5
-            grid: [2, 0]
+            grid: [3, 0]
         - TimeEntry:
             id: alarm_every_entry
             text_variable:
                 name: alarm_every
                 type: string
-            grid: [2, 1]
+            grid: [3, 1]
         - Label:
             text: Position
             font_size: 14
