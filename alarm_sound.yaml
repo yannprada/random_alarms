@@ -6,6 +6,7 @@ AlarmSound:
             font_size: 12
             grid: [0, 0]
         - Slider:
+            id: notes_amount
             inner_config:
                 width: 100
                 height: 40
