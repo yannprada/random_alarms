@@ -66,12 +66,13 @@ class AlarmAppearance(AlarmLabelFrame):
     
     def on_color_button(self):
         color_code = colorchooser.askcolor(title ="Choose color")
+        if color_code is None or color_code == (None, None):
+            return
         self.set_color(color_code)
     
     def set_color(self, color=((255, 255, 255), 'white')):
         rgb = color[0]
         color_name = color[1]
-        
         h, l, s = colorsys.rgb_to_hls(*rgb)
         fg = 'black' if l > 125 else 'white'
         
