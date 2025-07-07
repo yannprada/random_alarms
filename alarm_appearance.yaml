@@ -16,7 +16,7 @@ AlarmAppearance:
                 type: boolean
             grid: [0, 1]
         - Frame:
-            id: alarm_frame_fixed
+            id: position_fixed_frame
             grid:
                 row: 1
                 column: 0

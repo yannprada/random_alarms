@@ -5,15 +5,12 @@ AlarmSound:
             text: 'Number of notes'
             font_size: 12
             grid: [0, 0]
-        - Slider:
+        - DoubleScale:
             id: notes_amount
             inner_config:
-                width: 100
-                height: 40
-                min_val: 0
-                max_val: 50
-                step_size: 1
-                init_lis: [1, 10]
+                from_: 0
+                to: 50
+                precision: 0
             grid: [1, 0]
             grid:
                 sticky: we
@@ -21,16 +18,12 @@ AlarmSound:
             text: 'Length of notes'
             font_size: 12
             grid: [2, 0]
-        - Slider:
+        - DoubleScale:
             id: notes_length
             inner_config:
-                width: 100
-                height: 40
-                min_val: 0
-                max_val: 10
-                step_size: 0.1
-                digit_precision: .01f
-                init_lis: [0.5, 5]
+                from_: 0
+                to: 10
+                precision: 1
             grid: [3, 0]
             grid:
                 sticky: we
