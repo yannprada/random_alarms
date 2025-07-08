@@ -2,8 +2,8 @@ import sys
 sys.path.append('../yaml_tkinter')
 sys.path.append('../tk_double_scale')
 import yamltk
-
 from tk_double_scale import DoubleScale as _DoubleScale
+
 import tkinter as tk
 import time
 
