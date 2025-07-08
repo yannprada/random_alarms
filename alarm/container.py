@@ -2,7 +2,7 @@ import tkinter as tk
 
 
 class AlarmContainer(tk.Frame):
-    yaml_file = 'alarm_container.yaml'
+    yaml_file = 'alarm/container.yaml'
     alarm_id = 0
     alarm_count = 0
     

@@ -8,7 +8,7 @@ import tkinter as tk
 
 from root import Root
 from time_entry import TimeEntry
-from alarm_container import AlarmContainer
+from alarm.container import AlarmContainer
 from alarm.alarm import Alarm
 from alarm.appearance import AlarmAppearance
 from alarm.sound import AlarmSound
