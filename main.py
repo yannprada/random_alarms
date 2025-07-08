@@ -21,7 +21,7 @@ class DoubleScale(tk.Frame):
         self._scale.pack()
     
     def get_values(self):
-        return NotImplementedError()
+        return self._scale.get_values()
 
 
 if __name__ == '__main__':
