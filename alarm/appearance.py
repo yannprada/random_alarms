@@ -4,7 +4,7 @@ import colorsys
 
 
 class AlarmAppearance(tk.LabelFrame):
-    yaml_file = 'alarm_appearance.yaml'
+    yaml_file = 'alarm/appearance.yaml'
     
     def init(self):
         self.position_fixed_frame = self.builder.tk_widgets['position_fixed_frame']

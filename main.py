@@ -6,10 +6,13 @@ from tk_double_scale import DoubleScale as _DoubleScale
 
 import tkinter as tk
 
-from root import Root, Alarm, AlarmSound, AlarmTime
+from root import Root
 from time_entry import TimeEntry
 from alarm_container import AlarmContainer
-from alarm_appearance import AlarmAppearance
+from alarm.alarm import Alarm
+from alarm.appearance import AlarmAppearance
+from alarm.sound import AlarmSound
+from alarm.time import AlarmTime
 
 
 class DoubleScale(tk.Frame):
@@ -22,8 +25,8 @@ class DoubleScale(tk.Frame):
 
 
 if __name__ == '__main__':
-    branches = [Alarm, AlarmContainer, TimeEntry, AlarmSound, AlarmTime, 
-        AlarmAppearance, DoubleScale]
+    branches = [AlarmContainer, Alarm, AlarmAppearance, AlarmSound, AlarmTime,
+                DoubleScale, TimeEntry]
     builder = yamltk.Builder(Root, branches)
     
     button = builder.tk_widgets['button_add']
