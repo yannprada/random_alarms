@@ -1,0 +1,4 @@
+ColorButton:
+    text: pick
+    font_size: 12
+    app_command: on_click

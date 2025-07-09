@@ -27,11 +27,8 @@ AlarmAppearance:
             grid: [2, 0]
             grid:
                 sticky: w
-        - Button:
+        - ColorButton:
             id: color_button
-            text: pick
-            font_size: 12
-            app_command: on_color_button
             grid:
                 row: 2
                 column: 1
@@ -56,11 +53,8 @@ AlarmAppearance:
             grid: [4, 0]
             grid:
                 sticky: w
-        - Button:
+        - ColorButton:
             id: bg_color_button
-            text: pick
-            font_size: 12
-            app_command: on_bg_color_button
             grid:
                 row: 4
                 column: 1

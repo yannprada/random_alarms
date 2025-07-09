@@ -1,6 +1,4 @@
-from tkinter import colorchooser
 import tkinter as tk
-import colorsys
 
 
 class AlarmAppearance(tk.LabelFrame):
@@ -18,14 +16,7 @@ class AlarmAppearance(tk.LabelFrame):
                     variable=self.alarm_position)
                 b.grid(row=x, column=y)
         
-        # color variables and buttons
-        self.alarm_color = tk.StringVar()
-        self.alarm_bg_color = tk.StringVar()
-        self.color_button = self.builder.tk_widgets['color_button']
-        self.bg_color_button = self.builder.tk_widgets['bg_color_button']
-        self.set_color(self.alarm_color, self.color_button)
-        self.set_color(self.alarm_bg_color, self.bg_color_button)
-        
+        # manual trigger
         self.on_transparent_button()
         
         # set default position to center (11 means x=1, y=1)
@@ -40,30 +31,7 @@ class AlarmAppearance(tk.LabelFrame):
     def on_transparent_button(self):
         if self.tk_variables['is_bg_transparent'].get():
             self.builder.tk_widgets['bg_color_label'].grid_remove()
-            self.bg_color_button.grid_remove()
+            self.builder.tk_widgets['bg_color_button'].grid_remove()
         else:
             self.builder.tk_widgets['bg_color_label'].grid()
-            self.bg_color_button.grid()
-    
-    def on_color_button(self):
-        color_code = self.pick_color()
-        self.set_color(self.alarm_color, self.color_button, color_code)
-    
-    def on_bg_color_button(self):
-        color_code = self.pick_color()
-        self.set_color(self.alarm_bg_color, self.bg_color_button, color_code)
-    
-    def pick_color(self):
-        color_code = colorchooser.askcolor(title ="Choose color")
-        if color_code is None or color_code == (None, None):
-            return
-        return color_code
-    
-    def set_color(self, variable, button, color=((255, 255, 255), 'white')):
-        rgb = color[0]
-        color_name = color[1]
-        h, l, s = colorsys.rgb_to_hls(*rgb)
-        fg = 'black' if l > 125 else 'white'
-        
-        variable.set(color_name)
-        button.configure(bg=color_name, fg=fg)
+            self.builder.tk_widgets['bg_color_button'].grid()
