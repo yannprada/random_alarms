@@ -36,11 +36,40 @@ AlarmAppearance:
                 row: 2
                 column: 1
                 sticky: we
+        - Checkbutton:
+            text: Transparent background
+            font_size: 12
+            app_command: on_transparent_button
+            variable:
+                name: is_bg_transparent
+                type: boolean
+                default: true
+            grid:
+                row: 3
+                column: 0
+                columnspan: 2
+                sticky: w
+        - Label:
+            id: bg_color_label
+            text: 'Background:'
+            font_size: 12
+            grid: [4, 0]
+            grid:
+                sticky: w
+        - Button:
+            id: bg_color_button
+            text: pick
+            font_size: 12
+            app_command: on_bg_color_button
+            grid:
+                row: 4
+                column: 1
+                sticky: we
         - Label:
             text: 'Message:'
             font_size: 12
             grid:
-                row: 3
+                row: 5
                 column: 0
                 columnspan: 2
                 sticky: w
@@ -50,7 +79,7 @@ AlarmAppearance:
                 name: message
                 type: string
             grid:
-                row: 4
+                row: 6
                 column: 0
                 columnspan: 2
                 sticky: w
@@ -61,7 +90,7 @@ AlarmAppearance:
                 name: blinks_with_sound
                 type: boolean
             grid:
-                row: 5
+                row: 7
                 column: 0
                 columnspan: 2
                 sticky: w
