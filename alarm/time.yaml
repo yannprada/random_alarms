@@ -34,3 +34,15 @@ AlarmTime:
                 name: alarm_every
                 type: string
             grid: [3, 1]
+        - Label:
+            id: alarm_to_label
+            text: 'to:'
+            font_size: 12
+            width: 5
+            grid: [4, 0]
+        - TimeEntry:
+            id: alarm_to_entry
+            text_variable:
+                name: alarm_to
+                type: string
+            grid: [4, 1]
