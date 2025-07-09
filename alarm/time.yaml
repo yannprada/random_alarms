@@ -3,7 +3,6 @@ AlarmTime:
     children:
         - Label:
             text: 'when:'
-            font_size: 12
             width: 5
             grid: [1, 0]
         - TimeEntry:
@@ -13,7 +12,6 @@ AlarmTime:
             grid: [1, 1]
         - Checkbutton:
             text: Repeat
-            font_size: 12
             variable:
                 name: alarm_repeat
                 type: boolean
@@ -25,7 +23,6 @@ AlarmTime:
         - Label:
             id: alarm_every_label
             text: 'every:'
-            font_size: 12
             width: 5
             grid: [3, 0]
         - TimeEntry:
@@ -37,7 +34,6 @@ AlarmTime:
         - Label:
             id: alarm_to_label
             text: 'to:'
-            font_size: 12
             width: 5
             grid: [4, 0]
         - TimeEntry:

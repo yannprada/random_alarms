@@ -11,14 +11,10 @@ class ColorButton(tk.Button):
         self.set_color()
     
     def on_click(self):
-        color_code = self.pick_color()
-        self.set_color(color_code)
-    
-    def pick_color(self):
         color_code = colorchooser.askcolor(title ="Choose color")
         if color_code is None or color_code == (None, None):
             return
-        return color_code
+        self.set_color(color_code)
     
     def set_color(self, color=((255, 255, 255), 'white')):
         rgb = color[0]

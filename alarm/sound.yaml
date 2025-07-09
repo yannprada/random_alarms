@@ -3,7 +3,6 @@ AlarmSound:
     children:
         - Label:
             text: 'Number of notes'
-            font_size: 12
             grid: [0, 0]
         - DoubleScale:
             id: notes_amount
@@ -16,13 +15,12 @@ AlarmSound:
                 sticky: we
         - Label:
             text: 'Length of notes'
-            font_size: 12
             grid: [2, 0]
         - DoubleScale:
             id: notes_length
             inner_config:
                 from_: 0
-                to: 10
+                to: 8
                 precision: 1
             grid: [3, 0]
             grid:

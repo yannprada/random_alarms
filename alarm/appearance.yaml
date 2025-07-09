@@ -3,18 +3,27 @@ AlarmAppearance:
     children:
         - Label:
             text: 'Position:'
-            font_size: 12
             grid: [0, 0]
             grid:
                 sticky: w
         - Checkbutton:
             text: random
-            font_size: 12
             app_command: on_random_button
             variable:
                 name: is_random
                 type: boolean
             grid: [0, 1]
+        - Checkbutton:
+            id: move_with_sound_button
+            text: Move with sound
+            variable:
+                name: move_with_sound
+                type: boolean
+            grid:
+                row: 1
+                column: 0
+                columnspan: 2
+                sticky: w
         - Frame:
             id: position_fixed_frame
             grid:
@@ -23,7 +32,6 @@ AlarmAppearance:
                 columnspan: 2
         - Label:
             text: 'Color:'
-            font_size: 12
             grid: [2, 0]
             grid:
                 sticky: w
@@ -35,7 +43,6 @@ AlarmAppearance:
                 sticky: we
         - Checkbutton:
             text: Transparent background
-            font_size: 12
             app_command: on_transparent_button
             variable:
                 name: is_bg_transparent
@@ -49,7 +56,6 @@ AlarmAppearance:
         - Label:
             id: bg_color_label
             text: 'Background:'
-            font_size: 12
             grid: [4, 0]
             grid:
                 sticky: w
@@ -61,30 +67,17 @@ AlarmAppearance:
                 sticky: we
         - Label:
             text: 'Message:'
-            font_size: 12
             grid:
                 row: 5
                 column: 0
                 columnspan: 2
                 sticky: w
         - Entry:
-            font_size: 12
             text_variable:
                 name: message
                 type: string
             grid:
                 row: 6
-                column: 0
-                columnspan: 2
-                sticky: w
-        - Checkbutton:
-            text: Blink with sound
-            font_size: 12
-            variable:
-                name: blinks_with_sound
-                type: boolean
-            grid:
-                row: 7
                 column: 0
                 columnspan: 2
                 sticky: w

@@ -17,6 +17,7 @@ class AlarmAppearance(tk.LabelFrame):
                 b.grid(row=x, column=y)
         
         # manual trigger
+        self.on_random_button()
         self.on_transparent_button()
         
         # set default position to center (11 means x=1, y=1)
@@ -25,8 +26,10 @@ class AlarmAppearance(tk.LabelFrame):
     def on_random_button(self):
         if self.tk_variables['is_random'].get():
             self.position_fixed_frame.grid_remove()
+            self.builder.tk_widgets['move_with_sound_button'].grid()
         else:
             self.position_fixed_frame.grid()
+            self.builder.tk_widgets['move_with_sound_button'].grid_remove()
     
     def on_transparent_button(self):
         if self.tk_variables['is_bg_transparent'].get():
