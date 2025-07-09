@@ -80,4 +80,48 @@ AlarmAppearance:
                 row: 6
                 column: 0
                 columnspan: 2
-                sticky: w
+                sticky: we
+        - Label:
+            text: Font family
+            grid: [7, 0]
+        - Label:
+            text: Font size
+            grid: [7, 1]
+        - Listbox:
+            id: font_family_listbox
+            list_variable:
+                name: font_family
+                type: string
+            grid:
+                row: 8
+                column: 0
+                rowspan: 10
+        - Spinbox:
+            from: 0
+            to: 256
+            wrap: true
+            text_variable:
+                name: font_size
+                type: int
+            grid:
+                row: 8
+                column: 1
+                sticky: n
+        - Checkbutton:
+            text: Bold
+            variable:
+                name: font_bold
+                type: boolean
+            grid:
+                row: 9
+                column: 1
+                sticky: nw
+        - Checkbutton:
+            text: Italic
+            variable:
+                name: font_italic
+                type: boolean
+            grid:
+                row: 10
+                column: 1
+                sticky: nw
