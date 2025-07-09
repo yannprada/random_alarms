@@ -29,10 +29,10 @@ if __name__ == '__main__':
                 DoubleScale, TimeEntry]
     builder = yamltk.Builder(Root, branches)
     
-    button = builder.tk_widgets['button_add']
+    button_add = builder.tk_widgets['button_add']
     alarm_container = builder.tk_widgets['alarm_container']
-    button.configure(command=alarm_container.add)
-    alarm_container.update_display()
+    button_add.configure(command=alarm_container.add)
+    alarm_container._update()
     
     builder.root._update()
     builder.root.mainloop()

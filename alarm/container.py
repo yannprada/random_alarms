@@ -16,17 +16,17 @@ class AlarmContainer(tk.Frame):
         self.builder.add_branch('Alarm', 'alarm_inner_container')
         self.alarm_count += 1
         self.alarm_id = self.alarm_count - 1
-        self.update_display()
+        self._update()
     
     def on_previous(self):
         self.alarm_id -= 1
-        self.update_display()
+        self._update()
     
     def on_next(self):
         self.alarm_id += 1
-        self.update_display()
+        self._update()
     
-    def update_display(self):
+    def _update(self):
         # make sure id is not out of bounds
         self.alarm_id = wrap_int(self.alarm_id, self.alarm_count - 1)
         display_id = 0 if self.alarm_count == 0 else self.alarm_id + 1
