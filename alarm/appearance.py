@@ -86,10 +86,10 @@ class AlarmAppearance(tk.LabelFrame):
     def on_random_button(self):
         if self.tk_variables['is_random'].get():
             self.position_fixed_frame.grid_remove()
-            self.builder.tk_widgets['move_with_sound_button'].grid()
+            self.builder.tk_widgets['move_every_repetition_button'].grid()
         else:
             self.position_fixed_frame.grid()
-            self.builder.tk_widgets['move_with_sound_button'].grid_remove()
+            self.builder.tk_widgets['move_every_repetition_button'].grid_remove()
     
     def on_transparent_button(self):
         if self.tk_variables['is_bg_transparent'].get():

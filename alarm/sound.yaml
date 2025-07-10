@@ -2,26 +2,68 @@ AlarmSound:
     text: Sound
     children:
         - Label:
-            text: 'Number of notes'
+            text: 'Volume'
             grid: [0, 0]
+        - Scale:
+            id: volume
+            from: 0
+            to: 100
+            orient: horizontal
+            sliderlength: 15
+            sliderrelief: flat
+            grid:
+                sticky: we
+        - Frame:
+            children:
+                - Label:
+                    text: 'Instrument'
+                    pack: left
+                - Button:
+                    text: 'i'
+                    font_size: 6
+                    app_command: help_instruments
+                    pack: left
+            grid:
+                pady: [10, 0]
         - DoubleScale:
-            id: notes_amount
+            id: instrument
             inner_config:
                 from_: 0
-                to: 50
+                to: 127
                 precision: 0
-            grid: [1, 0]
+            grid:
+                row: 3
+                column: 0
+                sticky: we
+        - Frame:
+            children:
+                - Label:
+                    text: 'Notes'
+                    pack: left
+                - Button:
+                    text: 'i'
+                    font_size: 6
+                    app_command: help_notes
+                    pack: left
+            grid:
+                pady: [10, 0]
+        - DoubleScale:
+            id: notes
+            inner_config:
+                from_: 0
+                to: 127
+                precision: 1
             grid:
                 sticky: we
         - Label:
             text: 'Length of notes'
-            grid: [2, 0]
+            grid:
+                pady: [10, 0]
         - DoubleScale:
             id: notes_length
             inner_config:
                 from_: 0
                 to: 8
                 precision: 1
-            grid: [3, 0]
             grid:
                 sticky: we

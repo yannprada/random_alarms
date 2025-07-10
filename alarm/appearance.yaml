@@ -3,7 +3,6 @@ AlarmAppearance:
     children:
         - Label:
             text: 'Position:'
-            grid: [0, 0]
             grid:
                 sticky: w
         - Checkbutton:
@@ -14,26 +13,29 @@ AlarmAppearance:
                 type: boolean
             grid: [0, 1]
         - Checkbutton:
-            id: move_with_sound_button
-            text: Move with sound
+            id: move_every_repetition_button
+            text: Move every repetition
             variable:
-                name: move_with_sound
+                name: move_every_repetition
                 type: boolean
             grid:
                 row: 1
                 column: 0
                 columnspan: 2
                 sticky: w
+                pady: [0, 70]
         - Frame:
             id: position_fixed_frame
             grid:
                 row: 1
                 column: 0
                 columnspan: 2
+                pady: [0, 20]
         - Label:
             text: 'Color:'
-            grid: [2, 0]
             grid:
+                row: 2
+                column: 0
                 sticky: w
         - ColorButton:
             id: color_button
@@ -56,8 +58,9 @@ AlarmAppearance:
         - Label:
             id: bg_color_label
             text: 'Background:'
-            grid: [4, 0]
             grid:
+                row: 4
+                column: 0
                 sticky: w
         - ColorButton:
             id: bg_color_button
@@ -72,6 +75,7 @@ AlarmAppearance:
                 column: 0
                 columnspan: 2
                 sticky: w
+                pady: [20, 0]
         - Entry:
             text_variable:
                 name: message
@@ -81,6 +85,7 @@ AlarmAppearance:
                 column: 0
                 columnspan: 2
                 sticky: we
+                pady: [0, 20]
         - Label:
             text: Font family
             grid: [7, 0]
