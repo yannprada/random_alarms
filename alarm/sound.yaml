@@ -1,69 +1,89 @@
 AlarmSound:
     text: Sound
+    font_size: 12
     children:
-        - Label:
-            text: 'Volume'
-            grid: [0, 0]
-        - Scale:
-            id: volume
-            from: 0
-            to: 100
-            orient: horizontal
-            sliderlength: 15
-            sliderrelief: flat
-            grid:
-                sticky: we
         - Frame:
+            pack:
+                padx: 10
+                pady: 10
             children:
                 - Label:
-                    text: 'Instrument'
-                    pack: left
-                - Button:
-                    text: 'i'
-                    font_size: 6
-                    app_command: help_instruments
-                    pack: left
-            grid:
-                pady: [10, 0]
-        - DoubleScale:
-            id: instrument
-            inner_config:
-                from_: 0
-                to: 127
-                precision: 0
-            grid:
-                row: 3
-                column: 0
-                sticky: we
-        - Frame:
-            children:
+                    text: 'Volume'
+                    grid: [0, 0]
+                - Scale:
+                    id: volume
+                    from: 0
+                    to: 100
+                    orient: horizontal
+                    sliderlength: 15
+                    sliderrelief: flat
+                    grid:
+                        sticky: we
+                - Frame:
+                    children:
+                        - Label:
+                            text: 'Instrument'
+                            pack: left
+                        - Button:
+                            text: 'i'
+                            font_size: 6
+                            app_command: help_instruments
+                            pack: left
+                    grid:
+                        pady: [10, 0]
+                - DoubleScale:
+                    id: instruments_scale
+                    inner_config:
+                        from_: 0
+                        to: 127
+                        precision: 0
+                    grid:
+                        row: 3
+                        column: 0
+                        sticky: we
+                - Frame:
+                    children:
+                        - Label:
+                            text: 'Notes'
+                            pack: left
+                        - Button:
+                            text: 'i'
+                            font_size: 6
+                            app_command: help_notes
+                            pack: left
+                    grid:
+                        pady: [10, 0]
+                - DoubleScale:
+                    id: notes
+                    inner_config:
+                        from_: 0
+                        to: 127
+                        precision: 1
+                    grid:
+                        sticky: we
                 - Label:
-                    text: 'Notes'
-                    pack: left
-                - Button:
-                    text: 'i'
-                    font_size: 6
-                    app_command: help_notes
-                    pack: left
-            grid:
-                pady: [10, 0]
-        - DoubleScale:
-            id: notes
-            inner_config:
-                from_: 0
-                to: 127
-                precision: 1
-            grid:
-                sticky: we
-        - Label:
-            text: 'Length of notes'
-            grid:
-                pady: [10, 0]
-        - DoubleScale:
-            id: notes_length
-            inner_config:
-                from_: 0
-                to: 8
-                precision: 1
-            grid:
-                sticky: we
+                    text: 'Length of notes'
+                    grid:
+                        pady: [10, 0]
+                - DoubleScale:
+                    id: notes_length_scale
+                    inner_config:
+                        from_: 0.1
+                        to: 8
+                        precision: 1
+                    grid:
+                        sticky: we
+                - Label:
+                    text: 'Number of notes'
+                    grid:
+                        columnspan: 2
+                        pady: [10, 0]
+                - DoubleScale:
+                    id: notes_amount_scale
+                    inner_config:
+                        from_: 1
+                        to: 100
+                        precision: 0
+                    grid:
+                        columnspan: 2
+                        sticky: we

@@ -1,58 +1,55 @@
 AlarmTime:
     text: Time
+    font_size: 12
     children:
-        - Label:
-            text: 'Repetitions'
-            grid:
-                columnspan: 2
-        - DoubleScale:
-            id: repetitions
-            inner_config:
-                from_: 0
-                to: 100
-                precision: 0
-            grid:
-                columnspan: 2
-                sticky: we
-        - Label:
-            text: 'Starts:'
-            width: 5
-            grid: [2, 0]
-        - TimeEntry:
-            text_variable:
-                name: alarm_when
-                type: string
-            grid: [2, 1]
-        - Checkbutton:
-            text: Repeat
-            variable:
-                name: alarm_repeat
-                type: boolean
-            app_command: on_repeat_button
-            grid:
-                row: 3
-                column: 0
-                columnspan: 2
-                sticky: w
-        - Label:
-            id: alarm_every_label
-            text: 'every:'
-            width: 5
-            grid: [4, 0]
-        - TimeEntry:
-            id: alarm_every_entry
-            text_variable:
-                name: alarm_every
-                type: string
-            grid: [4, 1]
-        - Label:
-            id: alarm_to_label
-            text: 'to:'
-            width: 5
-            grid: [5, 0]
-        - TimeEntry:
-            id: alarm_to_entry
-            text_variable:
-                name: alarm_to
-                type: string
-            grid: [5, 1]
+        - Frame:
+            pack:
+                padx: 10
+                pady: 10
+            children:
+                - Label:
+                    text: 'Starts:'
+                    width: 5
+                    grid:
+                        row: 2
+                        column: 0
+                - TimeEntry:
+                    text_variable:
+                        name: alarm_when
+                        type: string
+                    grid:
+                        row: 2
+                        column: 1
+                - Checkbutton:
+                    text: Repeat
+                    variable:
+                        name: alarm_repeat
+                        type: boolean
+                    app_command: on_repeat_button
+                    grid:
+                        row: 3
+                        column: 0
+                        columnspan: 2
+                        sticky: w
+                - Label:
+                    id: alarm_every_label
+                    text: 'every:'
+                    width: 5
+                    grid: [4, 0]
+                - TimeEntry:
+                    id: alarm_every_entry
+                    text_variable:
+                        name: alarm_every
+                        type: string
+                    grid: [4, 1]
+                - Label:
+                    id: alarm_to_label
+                    text: 'to:'
+                    width: 5
+                    grid: [5, 0]
+                - TimeEntry:
+                    id: alarm_to_entry
+                    text_variable:
+                        name: alarm_to
+                        type: string
+                    grid: [5, 1]

@@ -1,132 +1,137 @@
 AlarmAppearance:
     text: Appearance
+    font_size: 12
     children:
-        - Label:
-            text: 'Position:'
-            grid:
-                sticky: w
-        - Checkbutton:
-            text: random
-            app_command: on_random_button
-            variable:
-                name: is_random
-                type: boolean
-            grid: [0, 1]
-        - Checkbutton:
-            id: move_every_repetition_button
-            text: Move every repetition
-            variable:
-                name: move_every_repetition
-                type: boolean
-            grid:
-                row: 1
-                column: 0
-                columnspan: 2
-                sticky: w
-                pady: [0, 70]
         - Frame:
-            id: position_fixed_frame
-            grid:
-                row: 1
-                column: 0
-                columnspan: 2
-                pady: [0, 20]
-        - Label:
-            text: 'Color:'
-            grid:
-                row: 2
-                column: 0
-                sticky: w
-        - ColorButton:
-            id: color_button
-            grid:
-                row: 2
-                column: 1
-                sticky: we
-        - Checkbutton:
-            text: Transparent background
-            app_command: on_transparent_button
-            variable:
-                name: is_bg_transparent
-                type: boolean
-                default: true
-            grid:
-                row: 3
-                column: 0
-                columnspan: 2
-                sticky: w
-        - Label:
-            id: bg_color_label
-            text: 'Background:'
-            grid:
-                row: 4
-                column: 0
-                sticky: w
-        - ColorButton:
-            id: bg_color_button
-            grid:
-                row: 4
-                column: 1
-                sticky: we
-        - Label:
-            text: 'Message:'
-            grid:
-                row: 5
-                column: 0
-                columnspan: 2
-                sticky: w
-                pady: [20, 0]
-        - Entry:
-            text_variable:
-                name: message
-                type: string
-            grid:
-                row: 6
-                column: 0
-                columnspan: 2
-                sticky: we
-                pady: [0, 20]
-        - Label:
-            text: Font family
-            grid: [7, 0]
-        - Label:
-            text: Font size
-            grid: [7, 1]
-        - Listbox:
-            id: font_family_listbox
-            list_variable:
-                name: font_family
-                type: string
-            grid:
-                row: 8
-                column: 0
-                rowspan: 10
-        - Spinbox:
-            from: 0
-            to: 256
-            wrap: true
-            text_variable:
-                name: font_size
-                type: int
-            grid:
-                row: 8
-                column: 1
-                sticky: n
-        - Checkbutton:
-            text: Bold
-            variable:
-                name: font_bold
-                type: boolean
-            grid:
-                row: 9
-                column: 1
-                sticky: nw
-        - Checkbutton:
-            text: Italic
-            variable:
-                name: font_italic
-                type: boolean
-            grid:
-                row: 10
-                column: 1
-                sticky: nw
+            pack:
+                padx: 10
+                pady: 10
+            children:
+                - Label:
+                    text: 'Position:'
+                    grid:
+                        sticky: w
+                - Checkbutton:
+                    text: random
+                    width: 18
+                    app_command: on_random_button
+                    variable:
+                        name: is_random
+                        type: boolean
+                    grid: [0, 1]
+                - Checkbutton:
+                    id: move_each_note_button
+                    text: Move with each note
+                    variable:
+                        name: move_each_note
+                        type: boolean
+                    grid:
+                        row: 1
+                        column: 1
+                        sticky: w
+                        pady: [0, 70]
+                - Frame:
+                    id: position_fixed_frame
+                    grid:
+                        row: 1
+                        column: 0
+                        pady: [0, 20]
+                - Label:
+                    text: 'Color:'
+                    grid:
+                        row: 2
+                        column: 0
+                        sticky: w
+                - ColorButton:
+                    id: color_button
+                    grid:
+                        row: 2
+                        column: 1
+                        sticky: we
+                - Checkbutton:
+                    text: Transparent background
+                    app_command: on_transparent_button
+                    variable:
+                        name: is_bg_transparent
+                        type: boolean
+                        default: true
+                    grid:
+                        row: 3
+                        column: 0
+                        columnspan: 2
+                        sticky: w
+                - Label:
+                    id: bg_color_label
+                    text: 'Background:'
+                    grid:
+                        row: 4
+                        column: 0
+                        sticky: w
+                - ColorButton:
+                    id: bg_color_button
+                    grid:
+                        row: 4
+                        column: 1
+                        sticky: we
+                - Label:
+                    text: 'Message:'
+                    grid:
+                        row: 5
+                        column: 0
+                        columnspan: 2
+                        sticky: w
+                        pady: [20, 0]
+                - Entry:
+                    text_variable:
+                        name: message
+                        type: string
+                    grid:
+                        row: 6
+                        column: 0
+                        columnspan: 2
+                        sticky: we
+                        pady: [0, 20]
+                - Label:
+                    text: Font family
+                    grid: [7, 0]
+                - Label:
+                    text: Font size
+                    grid: [7, 1]
+                - Listbox:
+                    id: font_family_listbox
+                    list_variable:
+                        name: font_family
+                        type: string
+                    grid:
+                        row: 8
+                        column: 0
+                        rowspan: 10
+                - Spinbox:
+                    from: 0
+                    to: 256
+                    wrap: true
+                    text_variable:
+                        name: font_size
+                        type: int
+                    grid:
+                        row: 8
+                        column: 1
+                        sticky: n
+                - Checkbutton:
+                    text: Bold
+                    variable:
+                        name: font_bold
+                        type: boolean
+                    grid:
+                        row: 9
+                        column: 1
+                        sticky: nw
+                - Checkbutton:
+                    text: Italic
+                    variable:
+                        name: font_italic
+                        type: boolean
+                    grid:
+                        row: 10
+                        column: 1
+                        sticky: nw
