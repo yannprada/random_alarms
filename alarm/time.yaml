@@ -5,7 +5,6 @@ AlarmTime:
         - Frame:
             pack:
                 padx: 10
-                pady: 10
             children:
                 - Label:
                     text: 'Starts:'
