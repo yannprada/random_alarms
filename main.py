@@ -1,8 +1,10 @@
 import sys
 sys.path.append('../yaml_tkinter')
 sys.path.append('../tk_double_scale')
+sys.path.append('../tk_time_picker')
 import yamltk
 from tk_double_scale import DoubleScale as _DoubleScale
+from tk_time_picker import TimePicker as _TimePicker
 
 import tkinter as tk
 
@@ -25,9 +27,18 @@ class DoubleScale(tk.Frame):
         return self._scale.get_values()
 
 
+class TimePicker(tk.Frame):
+    def inner_config(self, kwargs):
+        self._picker = _TimePicker(self, **kwargs)
+        self._picker.pack()
+    
+    def __str__(self):
+        return str(self._picker)
+
+
 if __name__ == '__main__':
     branches = [AlarmContainer, Alarm, AlarmAppearance, AlarmSound, AlarmTime,
-                ColorButton, DoubleScale, TimeEntry]
+                ColorButton, DoubleScale, TimeEntry, TimePicker]
     builder = yamltk.Builder(Root, branches)
     
     button_add = builder.tk_widgets['button_add']

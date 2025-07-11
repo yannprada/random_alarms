@@ -13,10 +13,8 @@ AlarmTime:
                     grid:
                         row: 2
                         column: 0
-                - TimeEntry:
-                    text_variable:
-                        name: alarm_when
-                        type: string
+                - TimePicker:
+                    inner_config: {}
                     grid:
                         row: 2
                         column: 1
@@ -36,20 +34,18 @@ AlarmTime:
                     text: 'every:'
                     width: 5
                     grid: [4, 0]
-                - TimeEntry:
+                - TimePicker:
                     id: alarm_every_entry
-                    text_variable:
-                        name: alarm_every
-                        type: string
+                    inner_config:
+                        hours_limit: 99
                     grid: [4, 1]
                 - Label:
                     id: alarm_to_label
                     text: 'to:'
                     width: 5
                     grid: [5, 0]
-                - TimeEntry:
+                - TimePicker:
                     id: alarm_to_entry
-                    text_variable:
-                        name: alarm_to
-                        type: string
+                    inner_config:
+                        hours_limit: 99
                     grid: [5, 1]
