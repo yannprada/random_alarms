@@ -28,23 +28,50 @@ AlarmTime:
                         column: 0
                         columnspan: 2
                         sticky: w
-                - Label:
-                    id: alarm_every_label
-                    text: 'every:'
-                    width: 5
-                    grid: [4, 0]
-                - TimePicker:
-                    id: alarm_every_entry
-                    inner_config:
-                        hours_limit: 99
-                    grid: [4, 1]
-                - Label:
-                    id: alarm_to_label
-                    text: 'to:'
-                    width: 5
-                    grid: [5, 0]
-                - TimePicker:
-                    id: alarm_to_entry
-                    inner_config:
-                        hours_limit: 99
-                    grid: [5, 1]
+                - Frame:
+                    id: frame_repeat
+                    grid:
+                        row: 4
+                        column: 0
+                        columnspan: 2
+                    children:
+                        - Label:
+                            text: 'every:'
+                            width: 5
+                            grid: [4, 0]
+                        - TimePicker:
+                            inner_config:
+                                hours_limit: 99
+                            grid: [4, 1]
+                        - Label:
+                            text: 'to:'
+                            width: 5
+                            grid: [5, 0]
+                        - TimePicker:
+                            inner_config:
+                                hours_limit: 99
+                            grid: [5, 1]
+        - Frame:
+            pack:
+                side: bottom
+                padx: 10
+                pady: [50, 10]
+            children:
+                - Button:
+                    text: Save & Run
+                    font_size: 12
+                    width: 10
+                    pack:
+                        pady: 5
+                - Button:
+                    text: Save
+                    font_size: 12
+                    width: 10
+                    pack:
+                        pady: 5
+                - Button:
+                    text: Stop
+                    font_size: 12
+                    width: 10
+                    pack:
+                        pady: 5
