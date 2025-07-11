@@ -16,6 +16,7 @@ from alarm.alarm import Alarm
 from alarm.appearance import AlarmAppearance
 from alarm.sound import AlarmSound
 from alarm.time import AlarmTime
+from alarm.run import AlarmRun
 
 
 class DoubleScale(tk.Frame):
@@ -37,7 +38,7 @@ class TimePicker(tk.Frame):
 
 
 if __name__ == '__main__':
-    branches = [AlarmContainer, Alarm, AlarmAppearance, AlarmSound, AlarmTime,
+    branches = [AlarmContainer, Alarm, AlarmAppearance, AlarmSound, AlarmTime, AlarmRun,
                 ColorButton, DoubleScale, TimeEntry, TimePicker]
     builder = yamltk.Builder(Root, branches)
     

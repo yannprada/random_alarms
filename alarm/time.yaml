@@ -51,27 +51,3 @@ AlarmTime:
                             inner_config:
                                 hours_limit: 99
                             grid: [5, 1]
-        - Frame:
-            pack:
-                side: bottom
-                padx: 10
-                pady: [50, 10]
-            children:
-                - Button:
-                    text: Save & Run
-                    font_size: 12
-                    width: 10
-                    pack:
-                        pady: 5
-                - Button:
-                    text: Save
-                    font_size: 12
-                    width: 10
-                    pack:
-                        pady: 5
-                - Button:
-                    text: Stop
-                    font_size: 12
-                    width: 10
-                    pack:
-                        pady: 5

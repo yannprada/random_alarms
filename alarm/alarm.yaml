@@ -12,11 +12,21 @@ Alarm:
                 side: left
                 expand: true
                 fill: both
-        - AlarmTime:
+        - Frame:
             pack:
                 side: left
                 expand: true
                 fill: both
+            children:
+                - AlarmTime:
+                    pack:
+                        side: top
+                        expand: true
+                        fill: both
+                - AlarmRun:
+                    pack:
+                        side: bottom
+                        fill: both
     pack:
         side: top
         expand: true
