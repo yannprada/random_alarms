@@ -46,6 +46,6 @@ if __name__ == '__main__':
     alarm_container = builder.tk_widgets['alarm_container']
     button_add.configure(command=alarm_container.add)
     alarm_container._update()
-    
+        
     builder.root._update()
     builder.root.mainloop()

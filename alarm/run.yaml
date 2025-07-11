@@ -1,4 +1,5 @@
 AlarmRun:
+    id: AlarmRun
     text: Run
     font_size: 12
     children:
@@ -10,18 +11,21 @@ AlarmRun:
                 - Button:
                     text: Save & Run
                     font_size: 12
+                    app_command: on_save_run_button
                     width: 10
                     pack:
                         pady: 5
                 - Button:
                     text: Save
                     font_size: 12
+                    app_command: on_save_button
                     width: 10
                     pack:
                         pady: 5
                 - Button:
                     text: Stop
                     font_size: 12
+                    app_command: on_stop_button
                     width: 10
                     pack:
                         pady: 5
