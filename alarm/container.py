@@ -6,17 +6,18 @@ class AlarmContainer(tk.Frame):
     alarm_id = 0
     alarm_count = 0
     
-    def get_widget(self, id):
-        return self.builder.tk_widgets[id]
-    
     def get_alarms(self):
-        return self.get_widget('alarm_inner_container').winfo_children()
+        return self.builder.tk_widgets['alarm_inner_container'].winfo_children()
     
     def add(self):
         self.builder.add_branch('Alarm', 'alarm_inner_container')
         self.alarm_count += 1
         self.alarm_id = self.alarm_count - 1
         self._update()
+        
+        # give current alarm its id
+        alarms = self.get_alarms()
+        alarms[self.alarm_id].id = self.alarm_id
     
     def on_previous(self):
         self.alarm_id -= 1

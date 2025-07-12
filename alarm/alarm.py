@@ -19,3 +19,7 @@ class Alarm(tk.Frame):
     
     def stop(self):
         print('alarm stop')
+# TODO: 
+# - collect alarm data
+# - send data through an event to main, with alarm number
+# - main should save it to yaml config file, along with other alarms data
