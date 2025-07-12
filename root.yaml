@@ -19,7 +19,7 @@ Root:
                     justify: left
                     pack: left
                 - Button:
-                    id: button_add
+                    name: button_add
                     text: +
                     font: ['', 16, bold]
                     pack: left

@@ -29,7 +29,7 @@ AlarmTime:
                         columnspan: 2
                         sticky: w
                 - Frame:
-                    id: frame_repeat
+                    name: frame_repeat
                     grid:
                         row: 4
                         column: 0

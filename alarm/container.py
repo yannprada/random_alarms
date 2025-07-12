@@ -7,10 +7,14 @@ class AlarmContainer(tk.Frame):
     alarm_count = 0
     
     def get_alarms(self):
-        return self.builder.tk_widgets['alarm_inner_container'].winfo_children()
+        return self.children['alarm_inner_container'].winfo_children()
     
     def add(self):
-        self.builder.add_branch('Alarm', 'alarm_inner_container')
+        branch_name = 'Alarm'
+        alarm_name = None
+        inner_container = self.children['alarm_inner_container']
+        
+        self.builder.add_branch(branch_name, alarm_name, inner_container)
         self.alarm_count += 1
         self.alarm_id = self.alarm_count - 1
         self._update()

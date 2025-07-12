@@ -1,9 +1,9 @@
 AlarmContainer:
-    id: alarm_container
+    name: alarm_container
     height: 500
     children:
         - Frame:
-            id: alarm_inner_container
+            name: alarm_inner_container
             pack:
                 side: top
                 expand: true

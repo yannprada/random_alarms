@@ -20,7 +20,7 @@ AlarmAppearance:
                         type: boolean
                     grid: [0, 1]
                 - Checkbutton:
-                    id: move_each_note_button
+                    name: move_each_note_button
                     text: Move with each note
                     variable:
                         name: move_each_note
@@ -31,7 +31,7 @@ AlarmAppearance:
                         sticky: w
                         pady: [0, 70]
                 - Frame:
-                    id: position_fixed_frame
+                    name: position_fixed_frame
                     grid:
                         row: 1
                         column: 0
@@ -43,7 +43,7 @@ AlarmAppearance:
                         column: 0
                         sticky: w
                 - ColorButton:
-                    id: color_button
+                    name: color_button
                     grid:
                         row: 2
                         column: 1
@@ -61,14 +61,14 @@ AlarmAppearance:
                         columnspan: 2
                         sticky: w
                 - Label:
-                    id: bg_color_label
+                    name: bg_color_label
                     text: 'Background:'
                     grid:
                         row: 4
                         column: 0
                         sticky: w
                 - ColorButton:
-                    id: bg_color_button
+                    name: bg_color_button
                     grid:
                         row: 4
                         column: 1
@@ -98,7 +98,7 @@ AlarmAppearance:
                     text: Font size
                     grid: [7, 1]
                 - Listbox:
-                    id: font_family_listbox
+                    name: font_family_listbox
                     list_variable:
                         name: font_family
                         type: string

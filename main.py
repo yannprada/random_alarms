@@ -42,8 +42,8 @@ if __name__ == '__main__':
                 ColorButton, DoubleScale, TimeEntry, TimePicker]
     builder = yamltk.Builder(Root, branches)
     
-    button_add = builder.tk_widgets['button_add']
-    alarm_container = builder.tk_widgets['alarm_container']
+    button_add = builder.root.children['!frame'].children['button_add']
+    alarm_container = builder.root.children['alarm_container']
     button_add.configure(command=alarm_container.add)
     alarm_container._update()
         

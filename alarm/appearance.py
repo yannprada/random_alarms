@@ -60,8 +60,13 @@ class AlarmAppearance(tk.LabelFrame):
     yaml_file = 'alarm/appearance.yaml'
     
     def init(self):
-        print(self.children['!frame'].children)
-        self.position_fixed_frame = self.builder.tk_widgets['position_fixed_frame']
+        frame = self.children['!frame']
+        self.move_each_note_button = frame.children['move_each_note_button']
+        self.position_fixed_frame = frame.children['position_fixed_frame']
+        self.color_button = frame.children['color_button']
+        self.bg_color_label = frame.children['bg_color_label']
+        self.bg_color_button = frame.children['bg_color_button']
+        self.font_family_listbox = frame.children['font_family_listbox']
         
         # generate the options here, because less typing...
         self.alarm_position = tk.StringVar()
@@ -73,9 +78,8 @@ class AlarmAppearance(tk.LabelFrame):
                 b.grid(row=x, column=y)
         
         # populate font families
-        listbox = self.builder.tk_widgets['font_family_listbox']
         for family in FONT_FAMILIES:
-            listbox.insert('end', family)
+            self.font_family_listbox.insert('end', family)
         
         # manual trigger to change visibility depending on checkboxes inital values
         self.on_random_button()
@@ -87,24 +91,24 @@ class AlarmAppearance(tk.LabelFrame):
     def on_random_button(self):
         if self.tk_variables['is_random'].get():
             self.position_fixed_frame.grid_remove()
-            self.builder.tk_widgets['move_each_note_button'].grid()
+            self.move_each_note_button.grid()
         else:
             self.position_fixed_frame.grid()
-            self.builder.tk_widgets['move_each_note_button'].grid_remove()
+            self.move_each_note_button.grid_remove()
     
     def on_transparent_button(self):
         if self.tk_variables['is_bg_transparent'].get():
-            self.builder.tk_widgets['bg_color_label'].grid_remove()
-            self.builder.tk_widgets['bg_color_button'].grid_remove()
+            self.bg_color_label.grid_remove()
+            self.bg_color_button.grid_remove()
         else:
-            self.builder.tk_widgets['bg_color_label'].grid()
-            self.builder.tk_widgets['bg_color_button'].grid()
+            self.bg_color_label.grid()
+            self.bg_color_button.grid()
     
     def get_data(self):
         data = {
             'is_position_random': self.tk_variables['is_random'].get(),
             'move_each_note': self.tk_variables['move_each_note'].get(),
             'alarm_position': self.alarm_position.get(),
-            'color': self.builder.tk_widgets['color_button'] # FIXME
+            'color': self.color_button # FIXME
         }
         return data
