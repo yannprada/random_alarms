@@ -1,5 +1,4 @@
 AlarmRun:
-    id: AlarmRun
     text: Run
     font_size: 12
     children:
