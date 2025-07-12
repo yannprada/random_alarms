@@ -21,3 +21,11 @@ class AlarmSound(tk.LabelFrame):
             'notes_amount': frame.children['notes_amount_scale'].get_values(),
         }
         return data
+    
+    def load(self, data):
+        frame = self.children['!frame']
+        frame.children['volume_scale'].set(data['volume'])
+        frame.children['instruments_scale'].set_values(data['instruments'])
+        frame.children['notes_scale'].set_values(data['notes'])
+        frame.children['notes_length_scale'].set_values(data['notes_length'])
+        frame.children['notes_amount_scale'].set_values(data['notes_amount'])

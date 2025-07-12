@@ -26,6 +26,9 @@ class DoubleScale(tk.Frame):
     
     def get_values(self):
         return self._scale.get_values()
+    
+    def set_values(self, data):
+        self._scale.set_values(*data)
 
 
 class TimePicker(tk.Frame):
@@ -35,6 +38,9 @@ class TimePicker(tk.Frame):
     
     def __str__(self):
         return str(self._picker)
+    
+    def set_value(self, value):
+        self._picker.set_value(value)
 
 
 if __name__ == '__main__':

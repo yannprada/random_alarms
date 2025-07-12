@@ -109,6 +109,10 @@ class AlarmAppearance(tk.LabelFrame):
         id = selection[0] if len(selection) else 0
         return FONT_FAMILIES[id]
     
+    def set_font_family(self, font_family):
+        id = FONT_FAMILIES.index(font_family)
+        self.font_family_listbox.select_set(id)
+    
     def get_data(self):
         data = {
             'is_position_random': self.tk_variables['is_random'].get(),
@@ -119,3 +123,11 @@ class AlarmAppearance(tk.LabelFrame):
             'font_family': self.get_font_family(),
         }
         return data
+    
+    def load(self, data):
+        self.tk_variables['is_random'].set(data['is_position_random'])
+        self.tk_variables['move_each_note'].set(data['move_each_note'])
+        self.alarm_position.set(data['alarm_position'])
+        self.color_button.set_color_name(data['color'])
+        self.bg_color_button.set_color_name(data['bg_color'])
+        self.set_font_family(data['font_family'])

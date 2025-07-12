@@ -1,4 +1,13 @@
 import tkinter as tk
+import os
+import yaml
+try:
+    from yaml import CLoader as Loader, CDumper as Dumper
+except ImportError:
+    from yaml import Loader, Dumper
+
+import pathlib
+script_location = pathlib.Path(__file__).parent
 
 
 class AlarmContainer(tk.Frame):
@@ -6,22 +15,49 @@ class AlarmContainer(tk.Frame):
     alarm_id = 0
     alarm_count = 0
     
+    def init(self):
+        # look for save files
+        files = os.listdir(f'{script_location}/saves/')
+        files = list(filter(lambda f: f.endswith('.yaml'), files))
+        if len(files):
+            self.load_alarms(files)
+    
+    def load_alarms(self, files):
+        # load files
+        extension_length = len('.yaml')
+        alarms_data = {}
+        for filename in files:
+            # filename template is: '{id}.yaml'
+            id = int(os.path.splitext(filename)[0])
+            
+            filepath = f'{script_location}/saves/{filename}'
+            with open(filepath) as f:
+                alarms_data[id] = yaml.load(f, Loader=Loader)
+        
+        # build and pass data to Alarm object
+        alarm_ids = sorted(alarms_data.keys())
+        for id in alarm_ids:
+            alarm = self.build()
+            alarm.id = id
+            alarm.load(alarms_data[id])
+            self.alarm_count += 1
+        
+        self.alarm_id = self.alarm_count - 1
+        self._update()
+    
     def get_alarms(self):
         return self.children['alarm_inner_container'].winfo_children()
     
     def add(self):
-        branch_name = 'Alarm'
-        alarm_name = None
-        inner_container = self.children['alarm_inner_container']
-        
-        self.builder.add_branch(branch_name, alarm_name, inner_container)
+        alarm = self.build()
         self.alarm_count += 1
         self.alarm_id = self.alarm_count - 1
+        alarm.id = self.alarm_id
         self._update()
-        
-        # give current alarm its id
-        alarms = self.get_alarms()
-        alarms[self.alarm_id].id = self.alarm_id
+    
+    def build(self):
+        parent = self.children['alarm_inner_container']
+        return self.builder.add_branch(branch_name='Alarm', name=None, parent=parent)
     
     def on_previous(self):
         self.alarm_id -= 1

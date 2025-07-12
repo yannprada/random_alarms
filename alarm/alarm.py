@@ -35,9 +35,18 @@ class Alarm(tk.Frame):
         }
         
         # event_generate cannot send data... save it directly from here?
-        filename = f'{script_location}/saves/{self.id}.yaml'
-        with open(filename, mode='w') as f:
+        filepath = f'{script_location}/saves/{self.id}.yaml'
+        with open(filepath, mode='w') as f:
             yaml.dump(data, f, Dumper=Dumper)
+    
+    def load(self, data):
+        alarm_appearance = self.children['!alarmappearance']
+        alarm_sound = self.children['!alarmsound']
+        alarm_time = self.children['!frame'].children['!alarmtime']
+        
+        alarm_appearance.load(data['appearance'])
+        alarm_sound.load(data['sound'])
+        alarm_time.load(data['time'])
     
     def stop(self):
         print('alarm stop')

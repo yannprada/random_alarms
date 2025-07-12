@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import colorchooser
 import colorsys
+import PIL.ImageColor as ImageColor
 
 
 class ColorButton(tk.Button):
@@ -25,6 +26,10 @@ class ColorButton(tk.Button):
         
         self.color_name.set(color_name)
         self.configure(bg=color_name, fg=fg)
+    
+    def set_color_name(self, color_name):
+        rgb = ImageColor.getrgb(color_name)
+        self.set_color((rgb, color_name))
     
     def get_color(self):
         return self.color_name.get()

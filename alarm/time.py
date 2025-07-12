@@ -25,5 +25,17 @@ class AlarmTime(tk.LabelFrame):
             'starting_time': str(frame.children['starting_time_picker']),
             'from_time': str(frame_repeat.children['from_time_picker']),
             'to_time': str(frame_repeat.children['to_time_picker']),
+            'repeat': self.tk_variables['alarm_repeat'].get(),
         }
         return data
+    
+    def load(self, data):
+        frame = self.children['!frame']
+        frame.children['starting_time_picker'].set_value(data['starting_time'])
+        
+        frame_repeat = frame.children['frame_repeat']
+        frame_repeat.children['from_time_picker'].set_value(data['from_time'])
+        frame_repeat.children['to_time_picker'].set_value(data['to_time'])
+        
+        self.tk_variables['alarm_repeat'].set(data['repeat'])
+        self.on_repeat_button()
