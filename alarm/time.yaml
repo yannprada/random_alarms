@@ -13,6 +13,7 @@ AlarmTime:
                         row: 2
                         column: 0
                 - TimePicker:
+                    name: starting_time_picker
                     inner_config: {}
                     grid:
                         row: 2
@@ -40,6 +41,7 @@ AlarmTime:
                             width: 5
                             grid: [4, 0]
                         - TimePicker:
+                            name: from_time_picker
                             inner_config:
                                 hours_limit: 99
                             grid: [4, 1]
@@ -48,6 +50,7 @@ AlarmTime:
                             width: 5
                             grid: [5, 0]
                         - TimePicker:
+                            name: to_time_picker
                             inner_config:
                                 hours_limit: 99
                             grid: [5, 1]

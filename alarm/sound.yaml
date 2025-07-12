@@ -54,7 +54,7 @@ AlarmSound:
                     grid:
                         pady: [10, 0]
                 - DoubleScale:
-                    name: notes
+                    name: notes_scale
                     inner_config:
                         from_: 0
                         to: 127

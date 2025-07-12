@@ -15,17 +15,17 @@ class Alarm(tk.Frame):
         print('alarm run')
     
     def save(self):
-        print('alarm save')
         # collect alarm data
         alarm_appearance = self.children['!alarmappearance']
         alarm_sound = self.children['!alarmsound']
         alarm_time = self.children['!frame'].children['!alarmtime']
         
         appearance_data = alarm_appearance.get_data()
-        # sound_data = alarm_sound.get_data()
-        # time_data = alarm_time.get_data()
+        sound_data = alarm_sound.get_data()
+        time_data = alarm_time.get_data()
         
         # send data through an event to main, with alarm number
+        self.event_generate('')
         # main should save it to yaml config file, along with other alarms data
         
     

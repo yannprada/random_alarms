@@ -17,3 +17,13 @@ class AlarmTime(tk.LabelFrame):
             self.frame_repeat.grid()
         else:
             self.frame_repeat.grid_remove()
+    
+    def get_data(self):
+        frame = self.children['!frame']
+        frame_repeat = frame.children['frame_repeat']
+        data = {
+            'starting_time': str(frame.children['starting_time_picker']),
+            'from_time': str(frame_repeat.children['from_time_picker']),
+            'to_time': str(frame_repeat.children['to_time_picker']),
+        }
+        return data

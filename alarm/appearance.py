@@ -104,11 +104,18 @@ class AlarmAppearance(tk.LabelFrame):
             self.bg_color_label.grid()
             self.bg_color_button.grid()
     
+    def get_font_family(self):
+        selection = self.font_family_listbox.curselection()
+        id = selection[0] if len(selection) else 0
+        return FONT_FAMILIES[id]
+    
     def get_data(self):
         data = {
             'is_position_random': self.tk_variables['is_random'].get(),
             'move_each_note': self.tk_variables['move_each_note'].get(),
             'alarm_position': self.alarm_position.get(),
-            'color': self.color_button # FIXME
+            'color': self.color_button.get_color(),
+            'bg_color': self.bg_color_button.get_color(),
+            'font_family': self.get_font_family(),
         }
         return data
