@@ -60,6 +60,7 @@ class AlarmAppearance(tk.LabelFrame):
     yaml_file = 'alarm/appearance.yaml'
     
     def init(self):
+        print(self.children['!frame'].children)
         self.position_fixed_frame = self.builder.tk_widgets['position_fixed_frame']
         
         # generate the options here, because less typing...
@@ -98,3 +99,12 @@ class AlarmAppearance(tk.LabelFrame):
         else:
             self.builder.tk_widgets['bg_color_label'].grid()
             self.builder.tk_widgets['bg_color_button'].grid()
+    
+    def get_data(self):
+        data = {
+            'is_position_random': self.tk_variables['is_random'].get(),
+            'move_each_note': self.tk_variables['move_each_note'].get(),
+            'alarm_position': self.alarm_position.get(),
+            'color': self.builder.tk_widgets['color_button'] # FIXME
+        }
+        return data
