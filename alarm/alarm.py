@@ -1,4 +1,12 @@
 import tkinter as tk
+import yaml
+try:
+    from yaml import CLoader as Loader, CDumper as Dumper
+except ImportError:
+    from yaml import Loader, Dumper
+
+import pathlib
+script_location = pathlib.Path(__file__).parent
 
 
 class Alarm(tk.Frame):
@@ -20,14 +28,16 @@ class Alarm(tk.Frame):
         alarm_sound = self.children['!alarmsound']
         alarm_time = self.children['!frame'].children['!alarmtime']
         
-        appearance_data = alarm_appearance.get_data()
-        sound_data = alarm_sound.get_data()
-        time_data = alarm_time.get_data()
+        data = {
+            'appearance': alarm_appearance.get_data(),
+            'sound': alarm_sound.get_data(),
+            'time': alarm_time.get_data(),
+        }
         
-        # send data through an event to main, with alarm number
-        self.event_generate('')
-        # main should save it to yaml config file, along with other alarms data
-        
+        # event_generate cannot send data... save it directly from here?
+        filename = f'{script_location}/saves/{self.id}.yaml'
+        with open(filename, mode='w') as f:
+            yaml.dump(data, f, Dumper=Dumper)
     
     def stop(self):
         print('alarm stop')
