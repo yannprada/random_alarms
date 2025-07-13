@@ -59,7 +59,7 @@ FONT_FAMILIES =  [
 class AlarmAppearance(tk.LabelFrame):
     yaml_file = 'alarm/appearance.yaml'
     tk_variable_keys = ['is_position_random', 'move_each_note', 'is_bg_transparent',
-                        'font_size', 'font_bold', 'font_italic']
+                        'font_size', 'font_bold', 'font_italic', 'message']
     
     def init(self):
         frame = self.children['!frame']
