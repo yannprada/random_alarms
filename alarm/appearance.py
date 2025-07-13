@@ -70,7 +70,7 @@ class AlarmAppearance(tk.LabelFrame):
         self.bg_color_button = frame.children['bg_color_button']
         self.font_family_listbox = frame.children['font_family_listbox']
         
-        # generate the options here, because less typing...
+        # generate the options here, because less typing
         self.alarm_position = tk.StringVar()
         
         for x in range(3):
@@ -83,12 +83,16 @@ class AlarmAppearance(tk.LabelFrame):
         for family in FONT_FAMILIES:
             self.font_family_listbox.insert('end', family)
         
+        self.after(100, self.post_init)
+    
+    def post_init(self):
         # manual trigger to change visibility depending on checkboxes inital values
         self.on_random_button()
         self.on_transparent_button()
         
-        # set default position to center (11 means x=1, y=1)
-        self.after(100, lambda: self.alarm_position.set('11'))
+        if not self.alarm_position.get():
+            # set default position to center (11 means x=1, y=1)
+            self.alarm_position.set('11')
     
     def on_random_button(self):
         if self.tk_variables['is_position_random'].get():
@@ -134,6 +138,3 @@ class AlarmAppearance(tk.LabelFrame):
         
         for key in self.tk_variable_keys:
             self.tk_variables[key].set(data[key])
-        
-        self.on_random_button()
-        self.on_transparent_button()
