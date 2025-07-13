@@ -16,7 +16,7 @@ AlarmAppearance:
                     width: 18
                     app_command: on_random_button
                     variable:
-                        name: is_random
+                        name: is_position_random
                         type: boolean
                     grid: [0, 1]
                 - Checkbutton:

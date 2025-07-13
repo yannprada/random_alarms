@@ -58,6 +58,8 @@ FONT_FAMILIES =  [
 
 class AlarmAppearance(tk.LabelFrame):
     yaml_file = 'alarm/appearance.yaml'
+    tk_variable_keys = ['is_position_random', 'move_each_note', 'is_bg_transparent',
+                        'font_size', 'font_bold', 'font_italic']
     
     def init(self):
         frame = self.children['!frame']
@@ -89,7 +91,7 @@ class AlarmAppearance(tk.LabelFrame):
         self.after(100, lambda: self.alarm_position.set('11'))
     
     def on_random_button(self):
-        if self.tk_variables['is_random'].get():
+        if self.tk_variables['is_position_random'].get():
             self.position_fixed_frame.grid_remove()
             self.move_each_note_button.grid()
         else:
@@ -115,30 +117,23 @@ class AlarmAppearance(tk.LabelFrame):
     
     def get_data(self):
         data = {
-            'is_position_random': self.tk_variables['is_random'].get(),
-            'move_each_note': self.tk_variables['move_each_note'].get(),
             'alarm_position': self.alarm_position.get(),
             'color': self.color_button.get_color(),
             'bg_color': self.bg_color_button.get_color(),
-            'is_bg_transparent': self.tk_variables['is_bg_transparent'].get(),
             'font_family': self.get_font_family(),
-            'font_size': self.tk_variables['font_size'].get(),
-            'font_bold': self.tk_variables['font_bold'].get(),
-            'font_italic': self.tk_variables['font_italic'].get(),
         }
+        for key in self.tk_variable_keys:
+            data[key] = self.tk_variables[key].get()
         return data
     
     def load(self, data):
-        self.tk_variables['is_random'].set(data['is_position_random'])
-        self.tk_variables['move_each_note'].set(data['move_each_note'])
         self.alarm_position.set(data['alarm_position'])
         self.color_button.set_color_name(data['color'])
         self.bg_color_button.set_color_name(data['bg_color'])
-        self.tk_variables['is_bg_transparent'].set(data['is_bg_transparent'])
         self.set_font_family(data['font_family'])
-        self.tk_variables['font_size'].set(data['font_size'])
-        self.tk_variables['font_bold'].set(data['font_bold'])
-        self.tk_variables['font_italic'].set(data['font_italic'])
+        
+        for key in self.tk_variable_keys:
+            self.tk_variables[key].set(data[key])
         
         self.on_random_button()
         self.on_transparent_button()
