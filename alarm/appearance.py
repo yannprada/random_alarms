@@ -120,7 +120,11 @@ class AlarmAppearance(tk.LabelFrame):
             'alarm_position': self.alarm_position.get(),
             'color': self.color_button.get_color(),
             'bg_color': self.bg_color_button.get_color(),
+            'is_bg_transparent': self.tk_variables['is_bg_transparent'].get(),
             'font_family': self.get_font_family(),
+            'font_size': self.tk_variables['font_size'].get(),
+            'font_bold': self.tk_variables['font_bold'].get(),
+            'font_italic': self.tk_variables['font_italic'].get(),
         }
         return data
     
@@ -130,4 +134,11 @@ class AlarmAppearance(tk.LabelFrame):
         self.alarm_position.set(data['alarm_position'])
         self.color_button.set_color_name(data['color'])
         self.bg_color_button.set_color_name(data['bg_color'])
+        self.tk_variables['is_bg_transparent'].set(data['is_bg_transparent'])
         self.set_font_family(data['font_family'])
+        self.tk_variables['font_size'].set(data['font_size'])
+        self.tk_variables['font_bold'].set(data['font_bold'])
+        self.tk_variables['font_italic'].set(data['font_italic'])
+        
+        self.on_random_button()
+        self.on_transparent_button()

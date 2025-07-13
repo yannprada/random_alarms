@@ -49,11 +49,5 @@ BRANCHES = [AlarmContainer, Alarm, AlarmAppearance, AlarmSound, AlarmTime, Alarm
 
 if __name__ == '__main__':
     builder = yamltk.Builder(Root, BRANCHES)
-    
-    button_add = builder.root.children['!frame'].children['button_add']
-    alarm_container = builder.root.children['alarm_container']
-    button_add.configure(command=alarm_container.add)
-    alarm_container._update()
-    
-    builder.root._update()
+    builder.root.post_init()
     builder.root.mainloop()
