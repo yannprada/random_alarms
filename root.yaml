@@ -31,4 +31,5 @@ Root:
                         name: current_time
                         type: string
                     pack: right
-        - AlarmContainer: true
+        - AlarmContainer:
+            name: alarm_container

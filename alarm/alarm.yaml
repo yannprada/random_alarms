@@ -3,11 +3,13 @@ Alarm:
     pady: 10
     children:
         - AlarmAppearance:
+            name: alarm_appearance
             pack:
                 side: left
                 expand: true
                 fill: both
         - AlarmSound:
+            name: alarm_sound
             pack:
                 side: left
                 expand: true
@@ -19,11 +21,13 @@ Alarm:
                 fill: both
             children:
                 - AlarmTime:
+                    name: alarm_time
                     pack:
                         side: top
                         expand: true
                         fill: both
                 - AlarmRun:
+                    name: alarm_run
                     pack:
                         side: bottom
                         fill: both

@@ -45,9 +45,6 @@ class AlarmContainer(tk.Frame):
         self.alarm_id = self.alarm_count - 1
         self._update()
     
-    def get_alarms(self):
-        return self.children['alarm_inner_container'].winfo_children()
-    
     def add(self):
         alarm = self.build()
         self.alarm_count += 1
@@ -56,8 +53,8 @@ class AlarmContainer(tk.Frame):
         self._update()
     
     def build(self):
-        parent = self.children['alarm_inner_container']
-        return self.builder.add_branch(branch_name='Alarm', name=None, parent=parent)
+        inner = self.alarm_inner_container
+        return self.builder.add_branch(branch_name='Alarm', name=None, parent=inner)
     
     def on_previous(self):
         self.alarm_id -= 1
@@ -66,6 +63,9 @@ class AlarmContainer(tk.Frame):
     def on_next(self):
         self.alarm_id += 1
         self._update()
+    
+    def get_alarms(self):
+        return self.alarm_inner_container.winfo_children()
     
     def _update(self):
         # make sure id is not out of bounds

@@ -62,14 +62,6 @@ class AlarmAppearance(tk.LabelFrame):
                         'font_size', 'font_bold', 'font_italic', 'message']
     
     def init(self):
-        frame = self.children['!frame']
-        self.move_each_note_button = frame.children['move_each_note_button']
-        self.position_fixed_frame = frame.children['position_fixed_frame']
-        self.color_button = frame.children['color_button']
-        self.bg_color_label = frame.children['bg_color_label']
-        self.bg_color_button = frame.children['bg_color_button']
-        self.font_family_listbox = frame.children['font_family_listbox']
-        
         # generate the options here, because less typing
         self.alarm_position = tk.StringVar()
         

@@ -1,0 +1,4 @@
+TODO
+- save confirmation for all alarms on application exit
+- delete alarm button
+- add alarm button inside alarm container

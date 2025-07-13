@@ -6,10 +6,8 @@ class Root(tk.Tk):
     yaml_file = 'root.yaml'
     
     def post_init(self):
-        button_add = self.children['!frame'].children['button_add']
-        alarm_container = self.children['alarm_container']
-        button_add.configure(command=alarm_container.add)
-        alarm_container._update()
+        self.button_add.configure(command=self.alarm_container.add)
+        self.alarm_container._update()
         self._update()
     
     def _update(self):

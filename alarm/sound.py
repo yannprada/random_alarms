@@ -12,20 +12,18 @@ class AlarmSound(tk.LabelFrame):
         webbrowser.open_new("https://computermusicresource.com/midikeys.html")
     
     def get_data(self):
-        frame = self.children['!frame']
         data = {
-            'volume': frame.children['volume_scale'].get(),
-            'instruments': frame.children['instruments_scale'].get_values(),
-            'notes': frame.children['notes_scale'].get_values(),
-            'notes_length': frame.children['notes_length_scale'].get_values(),
-            'notes_amount': frame.children['notes_amount_scale'].get_values(),
+            'volume': self.volume_scale.get(),
+            'instruments': self.instruments_scale.get_values(),
+            'notes': self.notes_scale.get_values(),
+            'notes_length': self.notes_length_scale.get_values(),
+            'notes_amount': self.notes_amount_scale.get_values(),
         }
         return data
     
     def load(self, data):
-        frame = self.children['!frame']
-        frame.children['volume_scale'].set(data['volume'])
-        frame.children['instruments_scale'].set_values(data['instruments'])
-        frame.children['notes_scale'].set_values(data['notes'])
-        frame.children['notes_length_scale'].set_values(data['notes_length'])
-        frame.children['notes_amount_scale'].set_values(data['notes_amount'])
+        self.volume_scale.set(data['volume'])
+        self.instruments_scale.set_values(data['instruments'])
+        self.notes_scale.set_values(data['notes'])
+        self.notes_length_scale.set_values(data['notes_length'])
+        self.notes_amount_scale.set_values(data['notes_amount'])
