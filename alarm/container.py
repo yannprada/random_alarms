@@ -1,10 +1,4 @@
 import tkinter as tk
-import yaml
-try:
-    from yaml import CLoader as Loader, CDumper as Dumper
-except ImportError:
-    from yaml import Loader, Dumper
-
 import uuid
 import os
 import pathlib
@@ -17,28 +11,16 @@ class AlarmContainer(tk.Frame):
     
     def init(self):
         # look for save files
-        files = os.listdir(f'{script_location}/saves/')
-        files = list(filter(lambda f: f.endswith('.yaml'), files))
-        if len(files):
-            self.load_alarms(files)
+        saves = os.listdir(f'{script_location}/saves/')
+        if len(saves):
+            self.load_alarms(saves)
     
     def load_alarms(self, files):
         # load files
-        alarms_data = {}
         for filename in files:
-            # filename template is: '{uuid}.yaml'
-            alarm_uuid = os.path.splitext(filename)[0]
-            
-            filepath = f'{script_location}/saves/{filename}'
-            with open(filepath) as f:
-                alarms_data[alarm_uuid] = yaml.load(f, Loader=Loader)
-        
-        # build and pass data to Alarm object
-        alarm_uuids = sorted(alarms_data.keys())
-        for alarm_uuid in alarm_uuids:
-            alarm = self.build()
-            alarm.id = alarm_uuid
-            alarm.load(alarms_data[alarm_uuid])
+            if filename.endswith('.yaml'):
+                alarm = self.build()
+                alarm.load(filename)
         
         self._update()
     

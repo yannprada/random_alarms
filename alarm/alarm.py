@@ -36,7 +36,13 @@ class Alarm(tk.Frame):
         with open(filepath, mode='w') as f:
             yaml.dump(data, f, Dumper=Dumper)
     
-    def load(self, data):
+    def load(self, filename):
+        self.id = os.path.splitext(filename)[0]
+        
+        filepath = f'{script_location}/saves/{filename}'
+        with open(filepath) as f:
+            data = yaml.load(f, Loader=Loader)
+        
         self.alarm_appearance.load(data['appearance'])
         self.alarm_sound.load(data['sound'])
         self.alarm_time.load(data['time'])
