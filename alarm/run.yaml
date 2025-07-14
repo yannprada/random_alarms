@@ -10,28 +10,28 @@ AlarmRun:
                 - Button:
                     text: Save & Run
                     font_size: 12
-                    app_command: on_save_run_button
+                    app_command_event: SAVE_RUN
                     width: 10
                     pack:
                         pady: 5
                 - Button:
                     text: Save
                     font_size: 12
-                    app_command: on_save_button
+                    app_command_event: SAVE
                     width: 10
                     pack:
                         pady: 5
                 - Button:
                     text: Stop
                     font_size: 12
-                    app_command: on_stop_button
+                    app_command_event: STOP
                     width: 10
                     pack:
                         pady: 5
                 - Button:
                     text: Remove
                     font_size: 12
-                    app_command: on_remove_button
+                    app_command_event: REMOVE
                     width: 10
                     pack:
                         pady: 5
