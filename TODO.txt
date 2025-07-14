@@ -1,8 +1,5 @@
 TODO
-- fixme: yamlt.py line 143
 - run alarm logic
 - stop alarm logic
-- alarm add button inside alarm container
-- shortcut like app_command for event_generate with button click
 - replace listbox
 - ttk support
