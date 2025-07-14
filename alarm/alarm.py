@@ -6,7 +6,6 @@ except ImportError:
 
 import tkinter as tk
 import uuid
-import os
 import pathlib
 
 script_location = pathlib.Path(__file__).parent
@@ -59,9 +58,10 @@ class Alarm(tk.Frame):
         print('alarm stop')
     
     def remove(self):
-        # delete save file
-        filepath = self.get_savefile_path()
-        os.remove(filepath)
+        # delete savefile
+        savefile = self.get_savefile_path()
+        if savefile.exists():
+            savefile.unlink()
         
         # notify container
         self.event_generate('<<REMOVE_ME>>')
