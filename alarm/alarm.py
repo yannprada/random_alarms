@@ -16,7 +16,10 @@ SAVES_SUFFIX = '.yaml'
 
 class Alarm(tk.Frame):
     yaml_file = 'alarm/alarm.yaml'
-    id = uuid.uuid1()
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.id = uuid.uuid1()
     
     def init(self):
         self.alarm_run.bind('<<SAVE_RUN>>', lambda e: self.save_run())
@@ -64,8 +67,4 @@ class Alarm(tk.Frame):
         self.event_generate('<<REMOVE_ME>>')
     
     def get_savefile_path(self, filename=None):
-        if filename is None:
-            path = SAVES_PATH / str(self.id)
-            return path.with_suffix(SAVES_SUFFIX)
-        else:
-            return SAVES_PATH / filename
+        return SAVES_PATH / (filename if filename else f"{self.id}{SAVES_SUFFIX}")
