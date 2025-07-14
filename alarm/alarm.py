@@ -5,6 +5,7 @@ try:
 except ImportError:
     from yaml import Loader, Dumper
 
+import os
 import pathlib
 script_location = pathlib.Path(__file__).parent
 
@@ -31,7 +32,7 @@ class Alarm(tk.Frame):
         }
         
         # event_generate cannot send data... save it directly from here?
-        filepath = f'{script_location}/saves/{self.id}.yaml'
+        filepath = self.get_file_path()
         with open(filepath, mode='w') as f:
             yaml.dump(data, f, Dumper=Dumper)
     
@@ -44,4 +45,12 @@ class Alarm(tk.Frame):
         print('alarm stop')
     
     def remove(self):
-        print('remove')
+        # delete save file
+        filepath = self.get_file_path()
+        os.remove(filepath)
+        
+        # notify container
+        self.event_generate('<<REMOVE_ME>>')
+    
+    def get_file_path(self):
+        return f'{script_location}/saves/{self.id}.yaml'
