@@ -1,5 +1,4 @@
 TODO
-- push: fixed error when remove alarm before save
 - run alarm logic
 - stop alarm logic
 - alarm add button inside alarm container

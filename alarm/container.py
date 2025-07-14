@@ -1,5 +1,4 @@
 import tkinter as tk
-import os
 import pathlib
 
 script_location = pathlib.Path(__file__).parent
@@ -11,14 +10,12 @@ class AlarmContainer(tk.Frame):
     current_id = 0
     
     def init(self):
-        # Look for save files and load alarms
-        self.load_alarms([f for f in os.listdir(SAVES_PATH) if f.endswith('.yaml')])
+        self.load_alarms(SAVES_PATH.glob('*.yaml'))
     
-    def load_alarms(self, files):
-        # Load files
-        for filename in files:
+    def load_alarms(self, paths):
+        for path in paths:
             alarm = self.build()
-            alarm.load(filename)
+            alarm.load(path)
         self._update()
     
     def add(self):
@@ -56,11 +53,9 @@ class AlarmContainer(tk.Frame):
         return len(self.get_alarms())
     
     def _update(self):
-        # Update current_id to be within bounds
+        # Update text count
         alarm_count = self.get_alarm_count()
         display_id = 0 if alarm_count == 0 else self.current_id + 1
-        
-        # Update text count
         text = f'{display_id}/{alarm_count}'
         self.tk_variables['alarm_count'].set(text)
         
