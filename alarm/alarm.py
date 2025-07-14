@@ -1,13 +1,14 @@
-import tkinter as tk
 import yaml
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
     from yaml import Loader, Dumper
 
+import tkinter as tk
 import uuid
 import os
 import pathlib
+
 script_location = pathlib.Path(__file__).parent
 SAVES_PATH = f'{script_location}/saves/'
 
