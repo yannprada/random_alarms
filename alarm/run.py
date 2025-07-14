@@ -12,3 +12,6 @@ class AlarmRun(tk.LabelFrame):
     
     def on_stop_button(self):
         self.event_generate('<<STOP>>')
+    
+    def on_remove_button(self):
+        self.event_generate('<<REMOVE>>')

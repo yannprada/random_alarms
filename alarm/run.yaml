@@ -28,3 +28,10 @@ AlarmRun:
                     width: 10
                     pack:
                         pady: 5
+                - Button:
+                    text: Remove
+                    font_size: 12
+                    app_command: on_remove_button
+                    width: 10
+                    pack:
+                        pady: 5

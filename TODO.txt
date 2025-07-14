@@ -1,4 +1,8 @@
 TODO
-- save confirmation for all alarms on application exit
-- delete alarm button
-- add alarm button inside alarm container
+- remove alarm logic
+- run alarm logic
+- stop alarm logic
+- alarm add button inside alarm container
+- shortcut like app_command for event_generate with button click
+- replace listbox
+- ttk support

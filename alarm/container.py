@@ -56,6 +56,10 @@ class AlarmContainer(tk.Frame):
         inner = self.alarm_inner_container
         return self.builder.add_branch(branch_name='Alarm', name=None, parent=inner)
     
+    def save_all(self):
+        for alarm in self.get_alarms():
+            alarm.save()
+    
     def on_previous(self):
         self.alarm_id -= 1
         self._update()
