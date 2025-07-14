@@ -11,27 +11,23 @@ class AlarmContainer(tk.Frame):
     current_id = 0
     
     def init(self):
-        # look for save files
-        saves = os.listdir(SAVES_PATH)
-        if len(saves):
-            self.load_alarms(saves)
+        # Look for save files and load alarms
+        self.load_alarms([f for f in os.listdir(SAVES_PATH) if f.endswith('.yaml')])
     
     def load_alarms(self, files):
-        # load files
+        # Load files
         for filename in files:
-            if filename.endswith('.yaml'):
-                alarm = self.build()
-                alarm.load(filename)
-        
+            alarm = self.build()
+            alarm.load(filename)
         self._update()
     
     def add(self):
-        alarm = self.build()
+        self.build()
         self._update()
     
     def build(self):
-        inner = self.alarm_inner_container
-        alarm = self.builder.add_branch(branch_name='Alarm', name=None, parent=inner)
+        alarm = self.builder.add_branch(branch_name='Alarm', name=None, 
+                                        parent=self.alarm_inner_container)
         alarm.bind('<<REMOVE_ME>>', lambda e: self.remove(alarm))
         self.current_id = self.get_alarm_count() - 1
         return alarm
@@ -46,43 +42,31 @@ class AlarmContainer(tk.Frame):
             alarm.save()
     
     def on_previous(self):
-        self.current_id -= 1
+        self.current_id = (self.current_id - 1) % self.get_alarm_count()
         self._update()
     
     def on_next(self):
-        self.current_id += 1
+        self.current_id = (self.current_id + 1) % self.get_alarm_count()
         self._update()
     
     def get_alarms(self):
         return self.alarm_inner_container.winfo_children()
     
     def get_alarm_count(self):
-        return len(self.alarm_inner_container.children)
+        return len(self.get_alarms())
     
     def _update(self):
+        # Update current_id to be within bounds
         alarm_count = self.get_alarm_count()
-        
-        # make sure id is not out of bounds
-        self.current_id = wrap_int(self.current_id, alarm_count - 1)
         display_id = 0 if alarm_count == 0 else self.current_id + 1
         
-        # update text count
+        # Update text count
         text = f'{display_id}/{alarm_count}'
         self.tk_variables['alarm_count'].set(text)
         
+        # Hide all alarms and show the relevant one
+        for alarm in self.get_alarms():
+            alarm.pack_forget()
+        
         if alarm_count > 0:
-            # hide all alarms
-            alarms = self.get_alarms()
-            for alarm in alarms:
-                alarm.pack_forget()
-            
-            # show relevant alarm
-            alarms[self.current_id].pack()
-
-
-def wrap_int(x, maxi):
-    if x < 0:
-        return maxi
-    if x > maxi:
-        return 0
-    return x
+            self.get_alarms()[self.current_id].pack()
