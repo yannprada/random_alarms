@@ -1,7 +1,9 @@
 import tkinter as tk
 import os
 import pathlib
+
 script_location = pathlib.Path(__file__).parent
+SAVES_PATH = script_location / 'saves'
 
 
 class AlarmContainer(tk.Frame):
@@ -10,7 +12,7 @@ class AlarmContainer(tk.Frame):
     
     def init(self):
         # look for save files
-        saves = os.listdir(f'{script_location}/saves/')
+        saves = os.listdir(SAVES_PATH)
         if len(saves):
             self.load_alarms(saves)
     

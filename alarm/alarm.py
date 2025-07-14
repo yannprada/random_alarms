@@ -10,17 +10,15 @@ import os
 import pathlib
 
 script_location = pathlib.Path(__file__).parent
-SAVES_PATH = f'{script_location}/saves/'
+SAVES_PATH = script_location / 'saves'
+SAVES_SUFFIX = '.yaml'
 
 
 class Alarm(tk.Frame):
     yaml_file = 'alarm/alarm.yaml'
-    id = None
+    id = uuid.uuid1()
     
     def init(self):
-        if self.id is None:
-            self.id = uuid.uuid1()
-        
         self.alarm_run.bind('<<SAVE_RUN>>', lambda e: self.save_run())
         self.alarm_run.bind('<<SAVE>>', lambda e: self.save())
         self.alarm_run.bind('<<STOP>>', lambda e: self.stop())
@@ -39,14 +37,14 @@ class Alarm(tk.Frame):
         }
         
         # event_generate cannot send data... save it directly from here?
-        filepath = self.get_file_path()
+        filepath = self.get_savefile_path()
         with open(filepath, mode='w') as f:
             yaml.dump(data, f, Dumper=Dumper)
     
     def load(self, filename):
-        self.id = os.path.splitext(filename)[0]
+        self.id = pathlib.Path(filename).stem
         
-        filepath = f'{SAVES_PATH}/{filename}'
+        filepath = self.get_savefile_path(filename)
         with open(filepath) as f:
             data = yaml.load(f, Loader=Loader)
         
@@ -59,11 +57,15 @@ class Alarm(tk.Frame):
     
     def remove(self):
         # delete save file
-        filepath = self.get_file_path()
+        filepath = self.get_savefile_path()
         os.remove(filepath)
         
         # notify container
         self.event_generate('<<REMOVE_ME>>')
     
-    def get_file_path(self):
-        return f'{SAVES_PATH}/{self.id}.yaml'
+    def get_savefile_path(self, filename=None):
+        if filename is None:
+            path = SAVES_PATH / str(self.id)
+            return path.with_suffix(SAVES_SUFFIX)
+        else:
+            return SAVES_PATH / filename
