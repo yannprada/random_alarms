@@ -5,15 +5,21 @@ try:
 except ImportError:
     from yaml import Loader, Dumper
 
+import uuid
 import os
 import pathlib
 script_location = pathlib.Path(__file__).parent
+SAVES_PATH = f'{script_location}/saves/'
 
 
 class Alarm(tk.Frame):
     yaml_file = 'alarm/alarm.yaml'
+    id = None
     
     def init(self):
+        if self.id is None:
+            self.id = uuid.uuid1()
+        
         self.alarm_run.bind('<<SAVE_RUN>>', lambda e: self.save_run())
         self.alarm_run.bind('<<SAVE>>', lambda e: self.save())
         self.alarm_run.bind('<<STOP>>', lambda e: self.stop())
@@ -39,7 +45,7 @@ class Alarm(tk.Frame):
     def load(self, filename):
         self.id = os.path.splitext(filename)[0]
         
-        filepath = f'{script_location}/saves/{filename}'
+        filepath = f'{SAVES_PATH}/{filename}'
         with open(filepath) as f:
             data = yaml.load(f, Loader=Loader)
         
@@ -59,4 +65,4 @@ class Alarm(tk.Frame):
         self.event_generate('<<REMOVE_ME>>')
     
     def get_file_path(self):
-        return f'{script_location}/saves/{self.id}.yaml'
+        return f'{SAVES_PATH}/{self.id}.yaml'

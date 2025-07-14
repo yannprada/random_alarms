@@ -1,5 +1,4 @@
 TODO
-- move load logic into alarm
 - run alarm logic
 - stop alarm logic
 - alarm add button inside alarm container

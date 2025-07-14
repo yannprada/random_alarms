@@ -1,5 +1,4 @@
 import tkinter as tk
-import uuid
 import os
 import pathlib
 script_location = pathlib.Path(__file__).parent
@@ -26,7 +25,6 @@ class AlarmContainer(tk.Frame):
     
     def add(self):
         alarm = self.build()
-        alarm.id = uuid.uuid1()
         self._update()
     
     def build(self):
