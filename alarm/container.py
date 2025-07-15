@@ -62,6 +62,9 @@ class AlarmContainer(tk.Frame):
         # Hide all alarms and show the relevant one
         for alarm in self.get_alarms():
             alarm.pack_forget()
+            alarm.toggle_active(False)
         
         if alarm_count > 0:
-            self.get_alarms()[self.current_id].pack()
+            alarm = self.get_alarms()[self.current_id]
+            alarm.pack()
+            alarm.toggle_active(True)

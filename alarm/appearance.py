@@ -75,6 +75,10 @@ class AlarmAppearance(tk.LabelFrame):
         for family in FONT_FAMILIES:
             self.font_family_listbox.insert('end', family)
         
+        self.active = False
+        self.font_family = None
+        self.on_listbox_poll()
+        
         self.after(100, self.post_init)
     
     def post_init(self):
@@ -102,13 +106,19 @@ class AlarmAppearance(tk.LabelFrame):
             self.bg_color_label.grid()
             self.bg_color_button.grid()
     
-    def get_font_family(self):
-        selection = self.font_family_listbox.curselection()
-        id = selection[0] if len(selection) else 0
-        return FONT_FAMILIES[id]
+    def on_listbox_poll(self):
+        if self.active:
+            selection = self.font_family_listbox.curselection()
+            id = selection[0] if len(selection) else 0
+            self.font_family = FONT_FAMILIES[id]
+        self.after(250, self.on_listbox_poll)
     
     def set_font_family(self, font_family):
-        id = FONT_FAMILIES.index(font_family)
+        self.font_family = font_family
+        self.set_font_family_cursor()
+    
+    def set_font_family_cursor(self):
+        id = FONT_FAMILIES.index(self.font_family)
         self.font_family_listbox.select_set(id)
     
     def get_data(self):
@@ -116,7 +126,7 @@ class AlarmAppearance(tk.LabelFrame):
             'alarm_position': self.alarm_position.get(),
             'color': self.color_button.get_color(),
             'bg_color': self.bg_color_button.get_color(),
-            'font_family': self.get_font_family(),
+            'font_family': self.font_family,
         }
         for key in self.tk_variable_keys:
             data[key] = self.tk_variables[key].get()
@@ -130,3 +140,8 @@ class AlarmAppearance(tk.LabelFrame):
         
         for key in self.tk_variable_keys:
             self.tk_variables[key].set(data[key])
+    
+    def toggle_active(self, active):
+        self.active = active
+        if self.active:
+            self.set_font_family_cursor()

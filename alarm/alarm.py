@@ -66,3 +66,6 @@ class Alarm(tk.Frame):
     
     def get_savefile_path(self, filename=None):
         return SAVES_PATH / (filename if filename else f"{self.id}{SAVES_SUFFIX}")
+    
+    def toggle_active(self, active):
+        self.alarm_appearance.toggle_active(active)
