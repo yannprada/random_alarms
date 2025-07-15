@@ -29,7 +29,3 @@ AlarmContainer:
             pack:
                 side: bottom
                 fill: x
-    pack: 
-        side: top
-        expand: true
-        fill: both

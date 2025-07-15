@@ -6,6 +6,8 @@ AlarmRun:
             pack:
                 padx: 10
                 pady: [10, 20]
+                expand: true
+                fill: both
             children:
                 - Button:
                     text: Save & Run

@@ -5,6 +5,8 @@ AlarmTime:
         - Frame:
             pack:
                 padx: 10
+                expand: true
+                fill: both
             children:
                 - Label:
                     text: 'Starts:'

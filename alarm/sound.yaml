@@ -6,6 +6,8 @@ AlarmSound:
             pack:
                 padx: 10
                 pady: 10
+                expand: true
+                fill: both
             children:
                 - Label:
                     text: 'Volume'

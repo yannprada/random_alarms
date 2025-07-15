@@ -33,3 +33,7 @@ Root:
                     pack: right
         - AlarmContainer:
             name: alarm_container
+            pack: 
+                side: top
+                expand: true
+                fill: both
