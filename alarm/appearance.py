@@ -64,7 +64,7 @@ class AlarmAppearance(tk.LabelFrame):
             # reflect the current font on the preview label
             is_bg_transparent = self.tk_variables['is_bg_transparent'].get()
             fg = self.color_button.get_color()
-            bg = self.bg_color_button.get_color()
+            bg = None if is_bg_transparent else self.bg_color_button.get_color()
             
             self.message_preview_label.configure(font=tkfont.Font(
                 family=self.font_family,
@@ -73,7 +73,8 @@ class AlarmAppearance(tk.LabelFrame):
                 slant='italic' if self.tk_variables['font_italic'].get() else 'roman',
                 underline=self.tk_variables['font_underline'].get(),
                 overstrike=self.tk_variables['font_overstrike'].get(),
-            ), fg=fg, bg=None if is_bg_transparent else bg)
+            ), fg=fg, bg=bg)
+            # self.message_preview_label.configure(bg=bg)
         
         self.after(250, self._refresh)
     

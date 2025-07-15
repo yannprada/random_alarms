@@ -1,5 +1,4 @@
 TODO
-- move preview to bottom
 - preview: fix is_bg_transparent preview
 - run alarm logic
 - stop alarm logic
