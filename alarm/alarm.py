@@ -28,7 +28,7 @@ class Alarm(tk.Frame):
     
     def save_run(self):
         self.save()
-        print('alarm run')
+        self.alarm_time.start()
     
     def save(self):
         # collect alarm data
@@ -56,6 +56,8 @@ class Alarm(tk.Frame):
         print('alarm stop')
     
     def remove(self):
+        self.stop()
+        
         # delete savefile
         savefile = self.get_savefile_path()
         if savefile.exists():
