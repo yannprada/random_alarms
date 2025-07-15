@@ -90,20 +90,31 @@ AlarmAppearance:
                         column: 0
                         columnspan: 2
                         sticky: we
-                        pady: [0, 20]
+                - Label:
+                    name: message_preview_label
+                    wraplength: 250
+                    text_variable:
+                        name: message
+                        type: string
+                    grid:
+                        row: 7
+                        column: 0
+                        columnspan: 2
+                        sticky: w
+                        pady: [5, 10]
                 - Label:
                     text: Font family
-                    grid: [7, 0]
+                    grid: [8, 0]
                 - Label:
                     text: Font size
-                    grid: [7, 1]
+                    grid: [8, 1]
                 - Listbox:
                     name: font_family_listbox
                     list_variable:
                         name: font_family
                         type: string
                     grid:
-                        row: 8
+                        row: 9
                         column: 0
                         rowspan: 10
                 - Spinbox:
@@ -114,7 +125,7 @@ AlarmAppearance:
                         name: font_size
                         type: int
                     grid:
-                        row: 8
+                        row: 9
                         column: 1
                         sticky: n
                 - Checkbutton:
@@ -123,7 +134,7 @@ AlarmAppearance:
                         name: font_bold
                         type: boolean
                     grid:
-                        row: 9
+                        row: 10
                         column: 1
                         sticky: nw
                 - Checkbutton:
@@ -132,7 +143,7 @@ AlarmAppearance:
                         name: font_italic
                         type: boolean
                     grid:
-                        row: 10
+                        row: 11
                         column: 1
                         sticky: nw
                 - Checkbutton:
@@ -141,7 +152,7 @@ AlarmAppearance:
                         name: font_underline
                         type: boolean
                     grid:
-                        row: 11
+                        row: 12
                         column: 1
                         sticky: nw
                 - Checkbutton:
@@ -150,6 +161,6 @@ AlarmAppearance:
                         name: font_overstrike
                         type: boolean
                     grid:
-                        row: 12
+                        row: 13
                         column: 1
                         sticky: nw

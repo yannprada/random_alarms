@@ -1,4 +1,5 @@
 import tkinter as tk
+import tkinter.font as tkfont
 
 
 FONT_FAMILIES =  [
@@ -77,8 +78,9 @@ class AlarmAppearance(tk.LabelFrame):
             self.font_family_listbox.insert('end', family)
         
         self.active = False
-        self.font_family = None
-        self.on_listbox_poll()
+        self.font_family = 'System'
+        self.tk_variables['font_size'].set(self.tk_variables['font_size'].get() or 10)
+        self._refresh()
         
         self.after(100, self.post_init)
     
@@ -107,12 +109,27 @@ class AlarmAppearance(tk.LabelFrame):
             self.bg_color_label.grid()
             self.bg_color_button.grid()
     
-    def on_listbox_poll(self):
+    def _refresh(self):
         if self.active:
+            # save the selected font family
             selection = self.font_family_listbox.curselection()
             id = selection[0] if len(selection) else 0
             self.font_family = FONT_FAMILIES[id]
-        self.after(250, self.on_listbox_poll)
+            
+            # reflect the current font on the preview label
+            is_bg_transparent = self.tk_variables['is_bg_transparent'].get()
+            fg = self.color_button.get_color()
+            bg = self.bg_color_button.get_color()
+            
+            self.message_preview_label.configure(font=tkfont.Font(
+                family=self.font_family,
+                size=self.tk_variables['font_size'].get(),
+                weight='bold' if self.tk_variables['font_bold'].get() else 'normal',
+                underline=self.tk_variables['font_underline'].get(),
+                overstrike=self.tk_variables['font_overstrike'].get(),
+            ), fg=fg, bg=None if is_bg_transparent else bg)
+        
+        self.after(250, self._refresh)
     
     def set_font_family(self, font_family):
         self.font_family = font_family
