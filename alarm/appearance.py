@@ -70,6 +70,7 @@ class AlarmAppearance(tk.LabelFrame):
                 family=self.font_family,
                 size=self.tk_variables['font_size'].get(),
                 weight='bold' if self.tk_variables['font_bold'].get() else 'normal',
+                slant='italic' if self.tk_variables['font_italic'].get() else 'roman',
                 underline=self.tk_variables['font_underline'].get(),
                 overstrike=self.tk_variables['font_overstrike'].get(),
             ), fg=fg, bg=None if is_bg_transparent else bg)
