@@ -74,40 +74,17 @@ AlarmAppearance:
                         column: 1
                         sticky: we
                 - Label:
-                    text: 'Message:'
-                    grid:
-                        row: 5
-                        column: 0
-                        columnspan: 2
-                        sticky: w
-                        pady: [20, 0]
-                - Entry:
-                    text_variable:
-                        name: message
-                        type: string
-                    grid:
-                        row: 6
-                        column: 0
-                        columnspan: 2
-                        sticky: we
-                - Label:
-                    name: message_preview_label
-                    wraplength: 250
-                    text_variable:
-                        name: message
-                        type: string
-                    grid:
-                        row: 7
-                        column: 0
-                        columnspan: 2
-                        sticky: w
-                        pady: [5, 10]
-                - Label:
                     text: Font family
-                    grid: [8, 0]
+                    grid:
+                        row: 8
+                        column: 0
+                        pady: [20, 0]
                 - Label:
                     text: Font size
-                    grid: [8, 1]
+                    grid:
+                        row: 8
+                        column: 1
+                        pady: [20, 0]
                 - Listbox:
                     name: font_family_listbox
                     list_variable:
@@ -116,7 +93,7 @@ AlarmAppearance:
                     grid:
                         row: 9
                         column: 0
-                        rowspan: 10
+                        rowspan: 5
                 - Spinbox:
                     from: 0
                     to: 256
@@ -164,3 +141,32 @@ AlarmAppearance:
                         row: 13
                         column: 1
                         sticky: nw
+                - Label:
+                    text: 'Message:'
+                    grid:
+                        row: 14
+                        column: 0
+                        columnspan: 2
+                        sticky: w
+                        pady: [20, 0]
+                - Entry:
+                    text_variable:
+                        name: message
+                        type: string
+                    grid:
+                        row: 15
+                        column: 0
+                        columnspan: 2
+                        sticky: we
+                - Label:
+                    name: message_preview_label
+                    wraplength: 250
+                    text_variable:
+                        name: message
+                        type: string
+                    grid:
+                        row: 16
+                        column: 0
+                        columnspan: 2
+                        sticky: w
+                        pady: [5, 10]

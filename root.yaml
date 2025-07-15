@@ -1,5 +1,5 @@
 Root:
-    minsize: [300, 200]
+    minsize: [650, 800]
     title: Random Alarms
     children:
         - Frame:

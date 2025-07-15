@@ -1,5 +1,4 @@
 AlarmContainer:
-    height: 500
     children:
         - Frame:
             name: alarm_inner_container
