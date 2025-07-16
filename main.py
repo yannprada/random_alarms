@@ -29,6 +29,9 @@ class TimePicker(tk.Frame):
     def __str__(self):
         return str(self._picker)
     
+    def get_seconds(self):
+        return self._picker.get_seconds()
+    
     def set_value(self, value):
         self._picker.set_value(value)
 

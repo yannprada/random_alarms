@@ -53,7 +53,7 @@ class Alarm(tk.Frame):
         self.alarm_time.load(data['time'])
     
     def stop(self):
-        print('alarm stop')
+        self.alarm_time.stop()
     
     def remove(self):
         self.stop()

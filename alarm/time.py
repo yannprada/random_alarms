@@ -43,11 +43,14 @@ class AlarmTime(tk.LabelFrame):
         self._job = self.after(delay * 1000, self.ring)
     
     def ring(self):
-        print('ding ding!')
+        print('chop chop!')
         
         if self.tk_variables['alarm_repeat'].get():
             delay = self.seconds_until_repeat()
             self.job_start(delay)
+    
+    def stop(self):
+        self.after_cancel(self._job)
     
     def seconds_until_next_time(self):
         starting_time = str(self.starting_time_picker)
@@ -63,4 +66,6 @@ class AlarmTime(tk.LabelFrame):
         return int(delay.total_seconds())
     
     def seconds_until_repeat(self):
-        return 0 # FIXME
+        from_ = self.from_time_picker.get_seconds()
+        to = self.to_time_picker.get_seconds()
+        return random.randint(from_, to)
