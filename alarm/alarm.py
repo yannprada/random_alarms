@@ -5,6 +5,7 @@ except ImportError:
     from yaml import Loader, Dumper
 
 import tkinter as tk
+import tkinter.messagebox as messagebox
 import uuid
 import pathlib
 
@@ -44,11 +45,12 @@ class Alarm(tk.Frame):
         self.alarm_time.stop()
         self.alarm_run.stop()
     
-    def auto_save(self):
-        self.save()
-        self.after(self.auto_save_delay, self.auto_save)
-    
     def remove(self):
+        answer = messagebox.askyesno(title='Remove this alarm', 
+                                     message='Are you sure?')
+        if not answer:
+            return
+        
         self.stop()
         
         # delete savefile
@@ -61,6 +63,10 @@ class Alarm(tk.Frame):
     
     def ring(self):
         print('it\'s ringing!')
+    
+    def auto_save(self):
+        self.save()
+        self.after(self.auto_save_delay, self.auto_save)
     
     def save(self):
         # collect alarm data
