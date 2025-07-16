@@ -5,6 +5,10 @@ import webbrowser
 class AlarmSound(tk.LabelFrame):
     yaml_file = 'alarm/sound.yaml'
     
+    def init(self):
+        self.volume_scale.set(50)
+        self.notes_amount_scale.set_values([1, 5])
+    
     def help_instruments(self):
         webbrowser.open_new("http://www.ccarh.org/courses/253/handout/gminstruments/")
     

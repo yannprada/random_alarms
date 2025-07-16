@@ -23,8 +23,10 @@ class AlarmAppearance(tk.LabelFrame):
             self.font_family_listbox.insert('end', family)
         
         self.active = False
+        self.tk_variables['message'].set('hello world!')
+        self.color_button.set_color(((0, 0, 0), 'black'))
         self.font_family = 'System'
-        self.tk_variables['font_size'].set(self.tk_variables['font_size'].get() or 10)
+        self.tk_variables['font_size'].set(10)
         self._refresh()
         
         self.after(100, self.post_init)
@@ -64,7 +66,8 @@ class AlarmAppearance(tk.LabelFrame):
             # reflect the current font on the preview label
             is_bg_transparent = self.tk_variables['is_bg_transparent'].get()
             fg = self.color_button.get_color()
-            bg = 'SystemButtonFace' if is_bg_transparent else self.bg_color_button.get_color()
+            bg = self.bg_color_button.get_color()
+            bg ='SystemButtonFace' if is_bg_transparent else bg
             
             self.message_preview_label.configure(font=tkfont.Font(
                 family=self.font_family,

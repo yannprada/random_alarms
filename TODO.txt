@@ -1,5 +1,4 @@
 TODO
-- add a button Test: runs the alarm once, immediately
 - check default values (volume, ...)
 - display alarm message: [transparent] TopLevel window
 - play the notes
