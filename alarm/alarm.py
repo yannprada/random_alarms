@@ -19,15 +19,27 @@ class Alarm(tk.Frame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.id = uuid.uuid1()
+        self.is_running = False
     
     def init(self):
-        self.alarm_run.bind('<<SAVE_RUN>>', lambda e: self.save_run())
-        self.alarm_run.bind('<<STOP>>', lambda e: self.stop())
+        self.alarm_run.bind('<<START_STOP>>', lambda e: self.start_stop())
         self.alarm_run.bind('<<REMOVE>>', lambda e: self.remove())
     
-    def save_run(self):
+    def start_stop(self):
+        if self.is_running:
+            self.stop()
+        else:
+            self.start()
+        self.is_running = not self.is_running
+    
+    def start(self):
         self.save()
         self.alarm_time.start()
+        self.alarm_run.start()
+    
+    def stop(self):
+        self.alarm_time.stop()
+        self.alarm_run.stop()
     
     def save(self):
         # collect alarm data
@@ -50,9 +62,6 @@ class Alarm(tk.Frame):
         self.alarm_appearance.load(data['appearance'])
         self.alarm_sound.load(data['sound'])
         self.alarm_time.load(data['time'])
-    
-    def stop(self):
-        self.alarm_time.stop()
     
     def remove(self):
         self.stop()

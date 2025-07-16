@@ -3,6 +3,7 @@ AlarmRun:
     font_size: 12
     children:
         - Frame:
+            name: frame
             pack:
                 padx: 10
                 pady: [10, 20]
@@ -10,23 +11,36 @@ AlarmRun:
                 fill: both
             children:
                 - Button:
-                    text: Save & Run
+                    name: start_button
+                    text: Start
                     font_size: 12
-                    app_command_event: SAVE_RUN
+                    bg: white
+                    app_command_event: START_STOP
                     width: 10
-                    pack:
+                    grid:
+                        row: 0
+                        column: 0
                         pady: 5
                 - Button:
+                    name: stop_button
                     text: Stop
                     font_size: 12
-                    app_command_event: STOP
+                    fg: white
+                    bg: black
+                    app_command_event: START_STOP
                     width: 10
-                    pack:
+                    grid:
+                        row: 1
+                        column: 0
                         pady: 5
                 - Button:
                     text: Remove
                     font_size: 12
+                    fg: white
+                    bg: red
                     app_command_event: REMOVE
                     width: 10
-                    pack:
+                    grid:
+                        row: 2
+                        column: 0
                         pady: 5
