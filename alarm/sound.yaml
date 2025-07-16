@@ -60,7 +60,7 @@ AlarmSound:
                     inner_config:
                         from_: 0
                         to: 127
-                        precision: 1
+                        precision: 0
                     grid:
                         sticky: we
                 - Label:
