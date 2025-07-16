@@ -1,2 +1,6 @@
 TODO
+- remove save button: program saves on quit anyway
+- add a save every so often, just in case of a crash
+- merge run and stop buttons into one that switches looks and function
+- replace job print by an event
 - display alarm message: [transparent] TopLevel window

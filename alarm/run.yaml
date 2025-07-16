@@ -17,13 +17,6 @@ AlarmRun:
                     pack:
                         pady: 5
                 - Button:
-                    text: Save
-                    font_size: 12
-                    app_command_event: SAVE
-                    width: 10
-                    pack:
-                        pady: 5
-                - Button:
                     text: Stop
                     font_size: 12
                     app_command_event: STOP

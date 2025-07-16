@@ -22,7 +22,6 @@ class Alarm(tk.Frame):
     
     def init(self):
         self.alarm_run.bind('<<SAVE_RUN>>', lambda e: self.save_run())
-        self.alarm_run.bind('<<SAVE>>', lambda e: self.save())
         self.alarm_run.bind('<<STOP>>', lambda e: self.stop())
         self.alarm_run.bind('<<REMOVE>>', lambda e: self.remove())
     
