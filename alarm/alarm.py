@@ -13,6 +13,8 @@ script_location = pathlib.Path(__file__).parent
 SAVES_PATH = script_location / 'saves'
 SAVES_SUFFIX = '.yaml'
 
+from .random_alarm import RandomAlarm
+
 
 class Alarm(tk.Frame):
     yaml_file = 'alarm/alarm.yaml'
@@ -63,21 +65,24 @@ class Alarm(tk.Frame):
         self.event_generate('<<REMOVE_ME>>')
     
     def ring(self):
-        print('it\'s ringing!')
+        data = self.get_data()
+        random_alarm = RandomAlarm(data['appearance'], data['sound'])
     
     def auto_save(self):
         self.save()
         self.after(self.auto_save_delay, self.auto_save)
     
-    def save(self):
-        # collect alarm data
-        data = {
+    def get_data(self):
+        return {
             'appearance': self.alarm_appearance.get_data(),
             'sound': self.alarm_sound.get_data(),
             'time': self.alarm_time.get_data(),
         }
+    
+    def save(self):
+        data = self.get_data()
         
-        # event_generate cannot send data... save it directly from here?
+        # event_generate cannot send data... save it directly from here
         filepath = self.get_savefile_path()
         with open(filepath, mode='w') as f:
             yaml.dump(data, f, Dumper=Dumper)
