@@ -1,2 +1,6 @@
 TODO
+- refactor RandomAlarm:
+	- separate into two subclasses: sound and toast
+	- each one gets data unpacked as kwargs, for easy access
+	- use events to communicate back to RandomAlarm if needed
 - display alarm message: [transparent] TopLevel window
