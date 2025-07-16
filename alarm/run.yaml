@@ -11,6 +11,14 @@ AlarmRun:
                 fill: both
             children:
                 - Button:
+                    name: test_button
+                    text: Test
+                    font_size: 12
+                    app_command_event: TEST
+                    width: 10
+                    grid:
+                        pady: 5
+                - Button:
                     name: start_button
                     text: Start
                     font_size: 12
@@ -18,8 +26,6 @@ AlarmRun:
                     app_command_event: START_STOP
                     width: 10
                     grid:
-                        row: 0
-                        column: 0
                         pady: 5
                 - Button:
                     name: stop_button
@@ -30,8 +36,6 @@ AlarmRun:
                     app_command_event: START_STOP
                     width: 10
                     grid:
-                        row: 1
-                        column: 0
                         pady: 5
                 - Button:
                     text: Remove
@@ -41,6 +45,4 @@ AlarmRun:
                     app_command_event: REMOVE
                     width: 10
                     grid:
-                        row: 2
-                        column: 0
                         pady: 5

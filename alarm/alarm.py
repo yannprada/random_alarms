@@ -24,6 +24,7 @@ class Alarm(tk.Frame):
         self.is_running = False
     
     def init(self):
+        self.alarm_run.bind('<<TEST>>', lambda e: self.ring())
         self.alarm_run.bind('<<START_STOP>>', lambda e: self.start_stop())
         self.alarm_run.bind('<<REMOVE>>', lambda e: self.remove())
         self.alarm_time.bind('<<ALARM_RING>>', lambda e: self.ring())
