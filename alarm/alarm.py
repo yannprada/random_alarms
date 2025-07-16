@@ -15,6 +15,7 @@ SAVES_SUFFIX = '.yaml'
 
 class Alarm(tk.Frame):
     yaml_file = 'alarm/alarm.yaml'
+    auto_save_delay = 60 * 1000
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -24,6 +25,7 @@ class Alarm(tk.Frame):
     def init(self):
         self.alarm_run.bind('<<START_STOP>>', lambda e: self.start_stop())
         self.alarm_run.bind('<<REMOVE>>', lambda e: self.remove())
+        self.after(self.auto_save_delay, self.auto_save)
     
     def start_stop(self):
         if self.is_running:
@@ -40,6 +42,10 @@ class Alarm(tk.Frame):
     def stop(self):
         self.alarm_time.stop()
         self.alarm_run.stop()
+    
+    def auto_save(self):
+        self.save()
+        self.after(self.auto_save_delay, self.auto_save)
     
     def save(self):
         # collect alarm data

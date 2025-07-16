@@ -8,6 +8,7 @@ class AlarmTime(tk.LabelFrame):
     
     def init(self):
         self.toggle_grid(False)
+        self._job = None
     
     def on_repeat_button(self):
         repeat = self.tk_variables['alarm_repeat']
@@ -50,7 +51,8 @@ class AlarmTime(tk.LabelFrame):
             self.job_start(delay)
     
     def stop(self):
-        self.after_cancel(self._job)
+        if self._job:
+            self.after_cancel(self._job)
     
     def seconds_until_next_time(self):
         starting_time = str(self.starting_time_picker)

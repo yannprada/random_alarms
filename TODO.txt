@@ -1,5 +1,4 @@
 TODO
-- add a save every so often, just in case of a crash
 - replace job print by an event
 - add confirm dialog on remove
 - display alarm message: [transparent] TopLevel window
