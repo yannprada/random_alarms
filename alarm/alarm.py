@@ -25,6 +25,7 @@ class Alarm(tk.Frame):
     def init(self):
         self.alarm_run.bind('<<START_STOP>>', lambda e: self.start_stop())
         self.alarm_run.bind('<<REMOVE>>', lambda e: self.remove())
+        self.alarm_time.bind('<<ALARM_RING>>', lambda e: self.ring())
         self.after(self.auto_save_delay, self.auto_save)
     
     def start_stop(self):
@@ -47,6 +48,20 @@ class Alarm(tk.Frame):
         self.save()
         self.after(self.auto_save_delay, self.auto_save)
     
+    def remove(self):
+        self.stop()
+        
+        # delete savefile
+        savefile = self.get_savefile_path()
+        if savefile.exists():
+            savefile.unlink()
+        
+        # notify container
+        self.event_generate('<<REMOVE_ME>>')
+    
+    def ring(self):
+        print('it\'s ringing!')
+    
     def save(self):
         # collect alarm data
         data = {
@@ -68,17 +83,6 @@ class Alarm(tk.Frame):
         self.alarm_appearance.load(data['appearance'])
         self.alarm_sound.load(data['sound'])
         self.alarm_time.load(data['time'])
-    
-    def remove(self):
-        self.stop()
-        
-        # delete savefile
-        savefile = self.get_savefile_path()
-        if savefile.exists():
-            savefile.unlink()
-        
-        # notify container
-        self.event_generate('<<REMOVE_ME>>')
     
     def get_savefile_path(self, filename=None):
         return SAVES_PATH / (filename if filename else f"{self.id}{SAVES_SUFFIX}")

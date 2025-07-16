@@ -41,10 +41,10 @@ class AlarmTime(tk.LabelFrame):
         self.job_start(delay)
     
     def job_start(self, delay):
-        self._job = self.after(delay * 1000, self.ring)
+        self._job = self.after(delay * 1000, self.do_job)
     
-    def ring(self):
-        print('chop chop!')
+    def do_job(self):
+        self.event_generate('<<ALARM_RING>>')
         
         if self.tk_variables['alarm_repeat'].get():
             delay = self.seconds_until_repeat()
