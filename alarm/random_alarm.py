@@ -4,7 +4,7 @@ import tkinter as tk
 import tkinter.font as tkfont
 
 # appearance_data:
-# {'alarm_position': '11', 'is_position_random': False, 'move_each_note': False, 
+# 'move_each_note': False, 
 
 # Class in charge spawning the actual message, and play the notes
 class RandomAlarm(tk.Frame):
@@ -18,12 +18,13 @@ class RandomAlarm(tk.Frame):
         self.ring()
     
     def ring(self):
-        print(self.sound.remaining_notes)
         if self.sound.remaining_notes <= 0:
             self.remove()
         else:
             self.sound.remaining_notes -= 1
             self.sound.play()
+            if self.toast.move_each_note:
+                self.toast._update()
     
     def on_note_off(self, event):
         self.ring()
@@ -97,7 +98,16 @@ class Toast(tk.Toplevel):
         self.update()
         self.size_x, self.size_y = self.winfo_width(), self.winfo_height()
         self.max_x = self.winfo_screenwidth() - self.size_x
-        self.max_x = self.winfo_screenheight() - self.size_y
+        self.max_y = self.winfo_screenheight() - self.size_y
+        
+        self._update()
+        self.show()
+    
+    def _update(self):
+        if self.is_position_random:
+            self.place_random()
+        else:
+            self.place_fixed()
     
     def place_random(self):
         # place at a random position on the screen
@@ -106,8 +116,22 @@ class Toast(tk.Toplevel):
         self.geometry(f'{self.size_x}x{self.size_y}+{x}+{y}')
         self.update()
     
-    def place_fixed(self, position):
-        pass
+    def place_fixed(self):
+        x, y = 0, 0
+        
+        if self.alarm_position[0] == '1':
+            x = self.max_x / 2
+        elif self.alarm_position[0] == '2':
+            x = self.max_x
+        
+        if self.alarm_position[1] == '1':
+            y = self.max_y / 2
+        elif self.alarm_position[1] == '2':
+            y = self.max_y
+        
+        x, y = int(x), int(y)
+        self.geometry(f'{self.size_x}x{self.size_y}+{x}+{y}')
+        self.update()
     
     def show(self):
         self.attributes('-alpha', 1.0)
