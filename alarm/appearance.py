@@ -60,8 +60,9 @@ class AlarmAppearance(tk.LabelFrame):
         if self.active:
             # save the selected font family
             selection = self.font_family_listbox.curselection()
-            id = selection[0] if len(selection) else 0
-            self.font_family = tkfont.families()[id]
+            if len(selection):
+                id = selection[0]
+                self.font_family = tkfont.families()[id]
             
             # reflect the current font on the preview label
             is_bg_transparent = self.tk_variables['is_bg_transparent'].get()
