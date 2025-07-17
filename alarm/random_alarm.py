@@ -112,21 +112,21 @@ class Toast(tk.Toplevel):
     def place_random(self):
         # place at a random position on the screen
         x = random.randint(0, self.max_x)
-        y = random.randint(0, self.max_x)
+        y = random.randint(0, self.max_y)
         self.geometry(f'{self.size_x}x{self.size_y}+{x}+{y}')
         self.update()
     
     def place_fixed(self):
         x, y = 0, 0
         
-        if self.alarm_position[0] == '1':
+        if self.alarm_position[1] == '1':
             x = self.max_x / 2
-        elif self.alarm_position[0] == '2':
+        elif self.alarm_position[1] == '2':
             x = self.max_x
         
-        if self.alarm_position[1] == '1':
+        if self.alarm_position[0] == '1':
             y = self.max_y / 2
-        elif self.alarm_position[1] == '2':
+        elif self.alarm_position[0] == '2':
             y = self.max_y
         
         x, y = int(x), int(y)
