@@ -14,38 +14,65 @@ import tkinter as tk
 # 'notes_amount': [6, 6]}
 
 # Class in charge spawning the actual message, and play the notes
-class RandomAlarm(tk.Toplevel):
-    def __init__(self, appearance_data, sound_data):
-        super().__init__()
-        self.appearance_data = appearance_data
-        self.sound_data = sound_data
+class RandomAlarm(tk.Frame):
+    def __init__(self, master, appearance_data, sound_data):
+        super().__init__(master)
+        self.sound = Sound(master, **sound_data)
+        self.toast = Toast(master, **appearance_data)
+        self.sound.bind('<<NOTE_OFF>>', self.on_note_off)
+        self.sound.pack()
+        self.pack()
+        self.ring()
+    
+    def ring(self):
+        print(self.sound.remaining_notes)
+        if self.sound.remaining_notes <= 0:
+            self.remove()
+        else:
+            self.sound.remaining_notes -= 1
+            self.sound.play()
+    
+    def on_note_off(self, event):
+        self.ring()
+    
+    def remove(self):
+        self.sound.destroy()
+        self.toast.destroy()
+        self.destroy()
+
+
+class Sound(tk.Frame):
+    def __init__(self, master, **kwargs):
+        self.__dict__.update(kwargs)
+        super().__init__(master)
         
         pygame.midi.init()
         self.midi_player = pygame.midi.Output(device_id=0)
         
-        self.remaining_notes = random.randint(*self.sound_data['notes_amount'])
-        self.play()
-    
+        self.remaining_notes = random.randint(*self.notes_amount)
+        
     def play(self):
-        if self.remaining_notes <= 0:
-            self.destroy()
-        
-        self.remaining_notes -= 1
-        
         # http://www.ccarh.org/courses/253/handout/gminstruments/
-        instrument = random.randint(*self.sound_data['instruments'])
+        instrument = random.randint(*self.instruments)
         self.midi_player.set_instrument(instrument)
         
-        note = random.randint(*self.sound_data['notes'])
-        self.midi_player.note_on(note, self.sound_data['volume'])
+        note = random.randint(*self.notes)
+        self.midi_player.note_on(note, self.volume)
         
-        delay = random.uniform(*self.sound_data['notes_length'])
-        self.after(int(delay * 1000), lambda: self.note_off(note))
+        delay = random.uniform(*self.notes_length)
+        delay = int(delay * 1000)
+        self.after(delay, lambda: self.note_off(note))
     
     def note_off(self, note):
-        self.midi_player.note_off(note, self.sound_data['volume'])
-        self.play()
+        self.midi_player.note_off(note, self.volume)
+        self.event_generate('<<NOTE_OFF>>')
     
     def __del__(self):
         del self.midi_player
         pygame.midi.quit()
+
+
+class Toast(tk.Toplevel):
+    def __init__(self, master, **kwargs):
+        self.__dict__.update(kwargs)
+        super().__init__(master)

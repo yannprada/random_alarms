@@ -66,7 +66,7 @@ class Alarm(tk.Frame):
     
     def ring(self):
         data = self.get_data()
-        random_alarm = RandomAlarm(data['appearance'], data['sound'])
+        random_alarm = RandomAlarm(self, data['appearance'], data['sound'])
     
     def auto_save(self):
         self.save()
