@@ -1,2 +1,4 @@
 TODO
-- fix double scale: cannot grab second cursor when same value
+- write READMEs
+- fix yaml_tk example
+- publish
