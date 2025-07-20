@@ -1,10 +1,6 @@
-import sys
-sys.path.append('../yaml_tkinter')
-sys.path.append('../tk_double_scale')
-sys.path.append('../tk_time_picker')
-import yamltk
-from tk_double_scale import DoubleScale as _DoubleScale
-from tk_time_picker import TimePicker as _TimePicker
+from lib.yaml_tkinter import yamltk
+from lib.tk_double_scale.tk_double_scale import DoubleScale as _DoubleScale
+from lib.tk_time_picker.tk_time_picker import TimePicker as _TimePicker
 
 import tkinter as tk
 
