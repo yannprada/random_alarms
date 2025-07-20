@@ -1,5 +1,4 @@
 TODO
 - write README for:
-	- yaml_tkinter
 	- random_alarms
 - publish
