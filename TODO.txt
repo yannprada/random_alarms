@@ -1,4 +1,0 @@
-TODO
-- write README for:
-	- random_alarms
-- publish
