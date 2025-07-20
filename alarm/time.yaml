@@ -14,6 +14,7 @@ AlarmTime:
                     grid:
                         row: 2
                         column: 0
+                        pady: 10
                 - TimePicker:
                     name: starting_time_picker
                     inner_config: {}
@@ -42,6 +43,7 @@ AlarmTime:
                             text: 'every:'
                             width: 5
                             grid: [4, 0]
+                            pady: 10
                         - TimePicker:
                             name: from_time_picker
                             inner_config:
@@ -51,6 +53,7 @@ AlarmTime:
                             text: 'to:'
                             width: 5
                             grid: [5, 0]
+                            pady: 10
                         - TimePicker:
                             name: to_time_picker
                             inner_config:
