@@ -1,4 +1,7 @@
 TODO
-- write READMEs
+- change random_alarms to use github submodules, sub repos or whatever
+- write README for:
+	- yaml_tkinter
+	- random_alarms
 - fix yaml_tk example
 - publish

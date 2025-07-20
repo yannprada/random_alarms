@@ -1,0 +1,9 @@
+[submodule "lib/tk_double_scale"]
+	path = lib/tk_double_scale
+	url = https://github.com/yannprada/tk_double_scale
+[submodule "lib/tk_time_picker"]
+	path = lib/tk_time_picker
+	url = https://github.com/yannprada/tk_time_picker
+[submodule "lib/yaml_tkinter"]
+	path = lib/yaml_tkinter
+	url = https://github.com/yannprada/yaml_tkinter
