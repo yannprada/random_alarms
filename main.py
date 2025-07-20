@@ -33,7 +33,7 @@ class TimePicker(tk.Frame):
 
 
 from root import Root
-from color_button import ColorButton
+from widgets.color_button import ColorButton
 from alarm.container import AlarmContainer
 from alarm.alarm import Alarm
 from alarm.appearance import AlarmAppearance
