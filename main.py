@@ -1,6 +1,7 @@
 from lib import DoubleScale as _DoubleScale
-from lib import TimePicker as _TimePicker
 from lib import yamltk
+
+from tk_digital_time_picker import TimePicker as _TimePicker
 
 import tkinter as tk
 

@@ -47,7 +47,7 @@ AlarmTime:
                         - TimePicker:
                             name: from_time_picker
                             inner_config:
-                                hours_limit: 99
+                                hours_limit: 100
                             grid: [4, 1]
                         - Label:
                             text: 'to:'
@@ -57,5 +57,5 @@ AlarmTime:
                         - TimePicker:
                             name: to_time_picker
                             inner_config:
-                                hours_limit: 99
+                                hours_limit: 100
                             grid: [5, 1]
