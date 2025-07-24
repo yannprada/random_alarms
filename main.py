@@ -11,8 +11,8 @@ class DoubleScale(tk.Frame):
         self._scale = _DoubleScale(self, **kwargs)
         self._scale.pack()
     
-    def get_values(self):
-        return self._scale.get_values()
+    def get_values(self, return_type=float):
+        return self._scale.get_values(return_type)
     
     def set_values(self, data):
         self._scale.set_values(*data)

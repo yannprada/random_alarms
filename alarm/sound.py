@@ -18,10 +18,10 @@ class AlarmSound(tk.LabelFrame):
     def get_data(self):
         data = {
             'volume': self.volume_scale.get(),
-            'instruments': self.instruments_scale.get_values(),
-            'notes': self.notes_scale.get_values(),
+            'instruments': self.instruments_scale.get_values(return_type=int),
+            'notes': self.notes_scale.get_values(return_type=int),
             'notes_length': self.notes_length_scale.get_values(),
-            'notes_amount': self.notes_amount_scale.get_values(),
+            'notes_amount': self.notes_amount_scale.get_values(return_type=int),
         }
         return data
     
