@@ -11,7 +11,7 @@ class AlarmTime(tk.LabelFrame):
         self._job = None
     
     def on_repeat_button(self):
-        repeat = self.tk_variables['alarm_repeat']
+        repeat = self.alarm_repeat
         self.toggle_grid(repeat.get())
     
     def toggle_grid(self, visible):
@@ -25,7 +25,7 @@ class AlarmTime(tk.LabelFrame):
             'starting_time': str(self.starting_time_picker),
             'from_time': str(self.from_time_picker),
             'to_time': str(self.to_time_picker),
-            'repeat': self.tk_variables['alarm_repeat'].get(),
+            'repeat': self.alarm_repeat.get(),
         }
         return data
     
@@ -33,7 +33,7 @@ class AlarmTime(tk.LabelFrame):
         self.starting_time_picker.set_value(data['starting_time'])
         self.from_time_picker.set_value(data['from_time'])
         self.to_time_picker.set_value(data['to_time'])
-        self.tk_variables['alarm_repeat'].set(data['repeat'])
+        self.alarm_repeat.set(data['repeat'])
         self.on_repeat_button()
     
     def start(self):
@@ -46,7 +46,7 @@ class AlarmTime(tk.LabelFrame):
     def do_job(self):
         self.event_generate('<<ALARM_RING>>')
         
-        if self.tk_variables['alarm_repeat'].get():
+        if self.alarm_repeat.get():
             delay = self.seconds_until_repeat()
             self.job_start(delay)
     

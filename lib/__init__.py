@@ -1,1 +1,1 @@
-from .yaml_tkinter import yamltk
+from .yaml_tkinter.src.yamltk import yamltk

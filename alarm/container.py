@@ -57,7 +57,7 @@ class AlarmContainer(tk.Frame):
         alarm_count = self.get_alarm_count()
         display_id = 0 if alarm_count == 0 else self.current_id + 1
         text = f'{display_id}/{alarm_count}'
-        self.tk_variables['alarm_count'].set(text)
+        self.alarm_count.set(text)
         
         # Hide all alarms and show the relevant one
         for alarm in self.get_alarms():

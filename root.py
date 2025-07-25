@@ -12,5 +12,5 @@ class Root(tk.Tk):
     
     def _update(self):
         current_time = time.strftime('%H:%M:%S')
-        self.tk_variables['current_time'].set(current_time)
+        self.current_time.set(current_time)
         self.after(100, self._update)

@@ -23,10 +23,10 @@ class AlarmAppearance(tk.LabelFrame):
             self.font_family_listbox.insert('end', family)
         
         self.active = False
-        self.tk_variables['message'].set('hello world!')
+        self.message.set('hello world!')
         self.color_button.set_color(((0, 0, 0), 'black'))
         self.font_family = 'System'
-        self.tk_variables['font_size'].set(10)
+        self.font_size.set(10)
         self._refresh()
         
         self.after(100, self.post_init)
@@ -41,7 +41,7 @@ class AlarmAppearance(tk.LabelFrame):
             self.alarm_position.set('11')
     
     def on_random_button(self):
-        if self.tk_variables['is_position_random'].get():
+        if self.is_position_random.get():
             self.position_fixed_frame.grid_remove()
             self.move_each_note_button.grid()
         else:
@@ -49,7 +49,7 @@ class AlarmAppearance(tk.LabelFrame):
             self.move_each_note_button.grid_remove()
     
     def on_transparent_button(self):
-        if self.tk_variables['is_bg_transparent'].get():
+        if self.is_bg_transparent.get():
             self.bg_color_label.grid_remove()
             self.bg_color_button.grid_remove()
         else:
@@ -65,18 +65,18 @@ class AlarmAppearance(tk.LabelFrame):
                 self.font_family = tkfont.families()[id]
             
             # reflect the current font on the preview label
-            is_bg_transparent = self.tk_variables['is_bg_transparent'].get()
+            is_bg_transparent = self.is_bg_transparent.get()
             fg = self.color_button.get_color()
             bg = self.bg_color_button.get_color()
             bg ='SystemButtonFace' if is_bg_transparent else bg
             
             self.message_preview_label.configure(font=tkfont.Font(
                 family=self.font_family,
-                size=self.tk_variables['font_size'].get(),
-                weight='bold' if self.tk_variables['font_bold'].get() else 'normal',
-                slant='italic' if self.tk_variables['font_italic'].get() else 'roman',
-                underline=self.tk_variables['font_underline'].get(),
-                overstrike=self.tk_variables['font_overstrike'].get(),
+                size=self.font_size.get(),
+                weight='bold' if self.font_bold.get() else 'normal',
+                slant='italic' if self.font_italic.get() else 'roman',
+                underline=self.font_underline.get(),
+                overstrike=self.font_overstrike.get(),
             ), fg=fg, bg=bg)
         
         self.after(250, self._refresh)
@@ -97,7 +97,7 @@ class AlarmAppearance(tk.LabelFrame):
             'font_family': self.font_family,
         }
         for key in self.tk_variable_keys:
-            data[key] = self.tk_variables[key].get()
+            data[key] = getattr(self, key).get()
         return data
     
     def load(self, data):
@@ -107,7 +107,7 @@ class AlarmAppearance(tk.LabelFrame):
         self.set_font_family(data['font_family'])
         
         for key in self.tk_variable_keys:
-            self.tk_variables[key].set(data[key])
+            getattr(self, key).set(data[key])
     
     def toggle_active(self, active):
         self.active = active
