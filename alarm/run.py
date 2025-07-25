@@ -4,7 +4,7 @@ import tkinter as tk
 class AlarmRun(tk.LabelFrame):
     yaml_file = 'alarm/run.yaml'
     
-    def init(self):
+    def post_build(self):
         self.stop()
         self.frame.columnconfigure(0, weight=1)
     

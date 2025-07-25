@@ -8,7 +8,7 @@ class AlarmAppearance(tk.LabelFrame):
                         'font_size', 'font_bold', 'font_italic', 'message',
                         'font_underline', 'font_overstrike']
     
-    def init(self):
+    def post_build(self):
         # generate the options here, because less typing
         self.alarm_position = tk.StringVar()
         
@@ -29,9 +29,9 @@ class AlarmAppearance(tk.LabelFrame):
         self.font_size.set(10)
         self._refresh()
         
-        self.after(100, self.post_init)
+        self.after(100, self.trigger_visibility_change)
     
-    def post_init(self):
+    def trigger_visibility_change(self):
         # manual trigger to change visibility depending on checkboxes inital values
         self.on_random_button()
         self.on_transparent_button()

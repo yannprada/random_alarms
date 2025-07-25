@@ -7,7 +7,7 @@ import PIL.ImageColor as ImageColor
 class ColorButton(tk.Button):
     yaml_file = 'widgets/color_button.yaml'
     
-    def init(self):
+    def post_build(self):
         self.color_name = tk.StringVar()
         self.set_color()
     

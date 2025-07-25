@@ -5,7 +5,7 @@ import webbrowser
 class AlarmSound(tk.LabelFrame):
     yaml_file = 'alarm/sound.yaml'
     
-    def init(self):
+    def post_build(self):
         self.volume_scale.set(50)
         self.notes_amount_scale.set_values([1, 5])
     

@@ -9,7 +9,7 @@ class AlarmContainer(tk.Frame):
     yaml_file = 'alarm/container.yaml'
     current_id = 0
     
-    def init(self):
+    def post_build(self):
         self.load_alarms(SAVES_PATH.glob('*.yaml'))
     
     def load_alarms(self, paths):

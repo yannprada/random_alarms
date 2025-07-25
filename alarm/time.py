@@ -6,7 +6,7 @@ import tkinter as tk
 class AlarmTime(tk.LabelFrame):
     yaml_file = 'alarm/time.yaml'
     
-    def init(self):
+    def post_build(self):
         self.toggle_grid(False)
         self._job = None
     

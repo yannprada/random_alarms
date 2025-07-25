@@ -25,7 +25,7 @@ class Alarm(tk.Frame):
         self.id = uuid.uuid1()
         self.is_running = False
     
-    def init(self):
+    def post_build(self):
         self.alarm_run.bind('<<TEST>>', lambda e: self.ring())
         self.alarm_run.bind('<<START_STOP>>', lambda e: self.start_stop())
         self.alarm_run.bind('<<REMOVE>>', lambda e: self.remove())
