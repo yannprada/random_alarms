@@ -1,9 +1,8 @@
-from lib import yamltk
+import tkinter as tk
 
 from tk_double_scale import DoubleScale as _DoubleScale
 from tk_digital_time_picker import TimePicker as _TimePicker
-
-import tkinter as tk
+import yamltk
 
 
 class DoubleScale(tk.Frame):
@@ -48,13 +47,13 @@ BRANCHES = [AlarmContainer, Alarm, AlarmAppearance, AlarmSound, AlarmTime, Alarm
 
 
 if __name__ == '__main__':
-    builder = yamltk.Builder(Root, BRANCHES)
-    builder.root.post_init()
+    root = yamltk.build(Root, BRANCHES)
+    root.post_init()
     
     def on_exit():
-        builder.root.alarm_container.save_all()
-        builder.root.destroy()
+        root.alarm_container.save_all()
+        root.destroy()
     
-    builder.root.protocol("WM_DELETE_WINDOW", on_exit)
+    root.protocol("WM_DELETE_WINDOW", on_exit)
     
-    builder.root.mainloop()
+    root.mainloop()
