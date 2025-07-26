@@ -35,7 +35,7 @@ AlarmSound:
                         pady: [10, 0]
                 - DoubleScale:
                     name: instruments_scale
-                    inner_config:
+                    init_kwargs:
                         from_: 0
                         to: 127
                         decimals: 0
@@ -57,7 +57,7 @@ AlarmSound:
                         pady: [10, 0]
                 - DoubleScale:
                     name: notes_scale
-                    inner_config:
+                    init_kwargs:
                         from_: 0
                         to: 127
                         decimals: 0
@@ -69,7 +69,7 @@ AlarmSound:
                         pady: [10, 0]
                 - DoubleScale:
                     name: notes_length_scale
-                    inner_config:
+                    init_kwargs:
                         from_: 0.1
                         to: 8
                         decimals: 1
@@ -82,7 +82,7 @@ AlarmSound:
                         pady: [10, 0]
                 - DoubleScale:
                     name: notes_amount_scale
-                    inner_config:
+                    init_kwargs:
                         from_: 1
                         to: 100
                         decimals: 0

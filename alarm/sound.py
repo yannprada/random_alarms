@@ -7,7 +7,7 @@ class AlarmSound(tk.LabelFrame):
     
     def post_build(self):
         self.volume_scale.set(50)
-        self.notes_amount_scale.set_values([1, 5])
+        self.notes_amount_scale.set_values(1, 5)
     
     def help_instruments(self):
         webbrowser.open_new("http://www.ccarh.org/courses/253/handout/gminstruments/")
@@ -27,7 +27,7 @@ class AlarmSound(tk.LabelFrame):
     
     def load(self, data):
         self.volume_scale.set(data['volume'])
-        self.instruments_scale.set_values(data['instruments'])
-        self.notes_scale.set_values(data['notes'])
-        self.notes_length_scale.set_values(data['notes_length'])
-        self.notes_amount_scale.set_values(data['notes_amount'])
+        self.instruments_scale.set_values(*data['instruments'])
+        self.notes_scale.set_values(*data['notes'])
+        self.notes_length_scale.set_values(*data['notes_length'])
+        self.notes_amount_scale.set_values(*data['notes_amount'])

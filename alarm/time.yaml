@@ -17,7 +17,6 @@ AlarmTime:
                         pady: 10
                 - TimePicker:
                     name: starting_time_picker
-                    inner_config: {}
                     grid:
                         row: 2
                         column: 1
@@ -46,7 +45,7 @@ AlarmTime:
                             pady: 10
                         - TimePicker:
                             name: from_time_picker
-                            inner_config:
+                            init_kwargs:
                                 hours_limit: 100
                             grid: [4, 1]
                         - Label:
@@ -56,6 +55,6 @@ AlarmTime:
                             pady: 10
                         - TimePicker:
                             name: to_time_picker
-                            inner_config:
+                            init_kwargs:
                                 hours_limit: 100
                             grid: [5, 1]
